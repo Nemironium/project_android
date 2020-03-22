@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Meet&amp;Go</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="get_started">Get started</string>
+    <string name="slide_header_1">Очень клёвый заголовок(1)</string>
+    <string name="slide_header_2">Очень клёвый заголовок(2)</string>
+    <string name="slide_header_3">Очень клёвый заголовок(3)</string>
+    <string name="slide_description_1">Очень клёвое описание (1). Очень клёвое описание (1). Очень клёвое описание (1)</string>
+    <string name="slide_description_2">Очень клёвое описание (2). Очень клёвое описание (2). Очень клёвое описание (2)</string>
+    <string name="slide_description_3">Очень клёвое описание (3). Очень клёвое описание (3). Очень клёвое описание (3)</string>
+    <string name="on_boarding_image">OnBoarding image</string>
+</resources>
