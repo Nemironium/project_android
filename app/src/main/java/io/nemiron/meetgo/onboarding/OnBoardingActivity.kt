@@ -10,9 +10,12 @@ import io.nemiron.meetgo.databinding.ActivityOnBoardingBinding
 import io.nemiron.meetgo.helpers.AppPrefs
 import io.nemiron.meetgo.helpers.hide
 import io.nemiron.meetgo.helpers.show
+import org.koin.android.ext.android.inject
 
 
 class OnBoardingActivity : AppCompatActivity() {
+
+    private val appPrefs: AppPrefs by inject()
 
     private val slides = listOf(
         SlideItem(R.string.slide_header_1, R.string.slide_description_1, R.drawable.play),
@@ -62,7 +65,7 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     private fun goToLogin() {
-        AppPrefs.isFirstTimeLaunch = false
+        appPrefs.isFirstTimeLaunch = false
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }

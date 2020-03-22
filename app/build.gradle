@@ -25,10 +25,6 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
     sourceSets {
         main {
             res.srcDirs = [
@@ -39,6 +35,11 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     viewBinding {
@@ -60,6 +61,11 @@ dependencies {
     implementation "com.google.android.material:material:$material_version"
     implementation "com.tbuonomo.andrui:viewpagerdotsindicator:$dots_indicator_version"
 
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     // Androidx Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
@@ -73,15 +79,6 @@ dependencies {
     // Moshi
     implementation "com.squareup.moshi:moshi:$moshi_version"
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
-    implementation 'com.google.android.material:material:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.navigation:navigation-fragment:2.2.1'
-    implementation 'androidx.navigation:navigation-ui:2.2.1'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.annotation:annotation:1.1.0'
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 
     // Retrofit2
@@ -96,11 +93,19 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt "com.github.bumptech.glide:compiler:$glide_version"
 
+    // Koin
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+
     // Timber
     implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation "com.github.quentin7b:koin-timber-logger:1.1.0"
 
     // Testing
     testImplementation "junit:junit:$junit_version"
+    testImplementation "org.koin:koin-test:$koin_version"
     androidTestImplementation "androidx.test.ext:junit:1.1.1"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 }

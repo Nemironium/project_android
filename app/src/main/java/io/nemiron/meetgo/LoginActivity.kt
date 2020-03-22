@@ -6,18 +6,20 @@ import androidx.appcompat.app.AppCompatActivity
 import io.nemiron.meetgo.databinding.ActivityLoginBinding
 import io.nemiron.meetgo.helpers.AppPrefs
 import io.nemiron.meetgo.onboarding.OnBoardingActivity
+import org.koin.android.ext.android.inject
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginBinding: ActivityLoginBinding
+    private val appPrefs: AppPrefs by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setAppTheme()
         super.onCreate(savedInstanceState)
 
-        if (AppPrefs.isFirstTimeLaunch)
+        if (appPrefs.isFirstTimeLaunch)
             goToOnBoarding()
-        else if (AppPrefs.isLogged)
+        else if (appPrefs.isLogged)
             goToNavigationActivity()
 
         loginBinding = ActivityLoginBinding.inflate(layoutInflater)

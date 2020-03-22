@@ -1,16 +1,18 @@
 package io.nemiron.meetgo.helpers
 
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.core.content.edit
+import org.koin.android.ext.koin.androidContext
+import org.koin.dsl.module
 
-object AppPrefs {
+val prefModule = module {
+    single { AppPrefs(androidContext()) }
+}
 
-    private lateinit var prefs: SharedPreferences
+class AppPrefs (context: Context) {
 
-    fun init(context: Context) {
-        prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-    }
+    private val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+
 
     var isFirstTimeLaunch: Boolean
         get() =
@@ -26,7 +28,9 @@ object AppPrefs {
             putBoolean(IS_LOGGED, value)
         }
 
-    private const val PREF_NAME = "APP_PREFS"
-    private const val IS_FIRST_TIME_LAUNCH = "IS_FIRST_TIME_LAUNCH"
-    private const val IS_LOGGED = "IS_LOGGED"
+    companion object {
+        private const val PREF_NAME = "APP_PREFS"
+        private const val IS_FIRST_TIME_LAUNCH = "IS_FIRST_TIME_LAUNCH"
+        private const val IS_LOGGED = "IS_LOGGED"
+    }
 }

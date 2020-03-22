@@ -19,9 +19,11 @@ buildscript {
         timber_version = "4.7.1"
         moxy_version = "2.1.1"
         navigation_version = "2.2.1"
+        dots_indicator_version = "4.1.2"
         junit_version = "4.13"
         espresso_version = "3.2.0"
-        dots_indicator_version = "4.1.2"
+        koin_version = "2.1.4"
+        lifecycle_version = "2.2.0"
     }
 
     repositories {
@@ -43,6 +45,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 
