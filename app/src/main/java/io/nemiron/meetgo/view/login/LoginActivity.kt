@@ -7,7 +7,7 @@ import io.nemiron.meetgo.NavigationActivity
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.ActivityLoginBinding
 import io.nemiron.meetgo.core.helpers.AppPrefs
-import io.nemiron.meetgo.view.onboarding.OnBoardingActivity
+import io.nemiron.meetgo.view.on_boarding.OnBoardingActivity
 import org.koin.android.ext.android.inject
 
 class LoginActivity : AppCompatActivity() {

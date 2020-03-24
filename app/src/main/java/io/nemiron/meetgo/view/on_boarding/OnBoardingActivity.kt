@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.view.onboarding
+package io.nemiron.meetgo.view.on_boarding
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +8,6 @@ import io.nemiron.meetgo.view.login.LoginActivity
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.ActivityOnBoardingBinding
 import io.nemiron.meetgo.core.helpers.AppPrefs
-import io.nemiron.meetgo.core.helpers.hide
-import io.nemiron.meetgo.core.helpers.show
 import org.koin.android.ext.android.inject
 
 
