@@ -101,7 +101,6 @@ dependencies {
 
     // Timber
     implementation "com.jakewharton.timber:timber:$timber_version"
-    implementation "com.github.quentin7b:koin-timber-logger:1.1.0"
 
     // Testing
     testImplementation "junit:junit:$junit_version"

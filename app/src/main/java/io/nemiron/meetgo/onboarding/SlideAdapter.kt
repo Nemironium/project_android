@@ -34,8 +34,8 @@ class SlideAdapter (private val context: Context, private val slides: List<Slide
     }
 
     private fun bind(view: View, pos: Int) = with(view) {
-        findViewById<TextView>(R.id.slide_header).setText(slides[pos].header)
-        findViewById<TextView>(R.id.slide_description).setText(slides[pos].description)
-        findViewById<ImageView>(R.id.slide_image).setImageResource(slides[pos].image)
+        findViewById<TextView>(R.id.slide_header).setText(slides[pos].headerResId)
+        findViewById<TextView>(R.id.slide_description).setText(slides[pos].descriptionResId)
+        findViewById<ImageView>(R.id.slide_image).setImageResource(slides[pos].imageResId)
     }
 }
