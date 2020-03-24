@@ -1,15 +1,15 @@
-package io.nemiron.meetgo.onboarding
+package io.nemiron.meetgo.view.onboarding
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
-import io.nemiron.meetgo.LoginActivity
+import io.nemiron.meetgo.view.login.LoginActivity
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.ActivityOnBoardingBinding
-import io.nemiron.meetgo.helpers.AppPrefs
-import io.nemiron.meetgo.helpers.hide
-import io.nemiron.meetgo.helpers.show
+import io.nemiron.meetgo.core.helpers.AppPrefs
+import io.nemiron.meetgo.core.helpers.hide
+import io.nemiron.meetgo.core.helpers.show
 import org.koin.android.ext.android.inject
 
 
@@ -18,9 +18,22 @@ class OnBoardingActivity : AppCompatActivity() {
     private val appPrefs: AppPrefs by inject()
 
     private val slides = listOf(
-        SlideItem(R.string.slide_header_1, R.string.slide_description_1, R.drawable.play),
-        SlideItem(R.string.slide_header_2, R.string.slide_description_2, R.drawable.play_anywhere),
-        SlideItem(R.string.slide_header_3, R.string.slide_description_3, R.drawable.play_together))
+        SlideItem(
+            R.string.slide_header_1,
+            R.string.slide_description_1,
+            R.drawable.play
+        ),
+        SlideItem(
+            R.string.slide_header_2,
+            R.string.slide_description_2,
+            R.drawable.play_anywhere
+        ),
+        SlideItem(
+            R.string.slide_header_3,
+            R.string.slide_description_3,
+            R.drawable.play_together
+        )
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +45,10 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     private fun initViewPager(binding: ActivityOnBoardingBinding) = with(binding) {
-        slider.adapter = SlideAdapter(this@OnBoardingActivity, slides)
+        slider.adapter = SlideAdapter(
+            this@OnBoardingActivity,
+            slides
+        )
         dotsIndicator.setViewPager(binding.slider)
     }
 

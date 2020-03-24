@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.ui.notifications
+package io.nemiron.meetgo.view.notifications
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -11,22 +11,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".onboarding.OnBoardingActivity"
+            android:name=".MainActivity">
+
+        </activity>
+        <activity
+            android:name=".view.onboarding.OnBoardingActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:theme="@style/AppTheme.Splash"
-            android:label="@string/title_activity_login">
+            android:name=".view.login.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".NavigationActivity"
             android:label="@string/title_activity_test">
-
         </activity>
     </application>
 

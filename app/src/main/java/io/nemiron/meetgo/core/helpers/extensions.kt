@@ -1,10 +1,9 @@
-package io.nemiron.meetgo.helpers
+package io.nemiron.meetgo.core.helpers
 
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
-import androidx.viewpager.widget.ViewPager
 
 fun View.show() {
     visibility = View.VISIBLE

@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.onboarding
+package io.nemiron.meetgo.view.onboarding
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ class SlideAdapter (private val context: Context, private val slides: List<Slide
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view = layoutInflater.inflate(R.layout.slide_on_boarding, container, false) as View
+        val view = layoutInflater.inflate(R.layout.item_on_boarding, container, false) as View
 
         bind(view, position)
         container.addView(view)

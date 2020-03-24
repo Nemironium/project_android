@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.ui.home
+package io.nemiron.meetgo.view.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

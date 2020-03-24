@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.onboarding
+package io.nemiron.meetgo.view.onboarding
 
 data class SlideItem(
     val headerResId: Int,

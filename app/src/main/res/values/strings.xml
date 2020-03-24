@@ -19,4 +19,7 @@
     <string name="slide_description_2">Очень клёвое описание (2). Очень клёвое описание (2). Очень клёвое описание (2)</string>
     <string name="slide_description_3">Очень клёвое описание (3). Очень клёвое описание (3). Очень клёвое описание (3)</string>
     <string name="on_boarding_image">OnBoarding image</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
