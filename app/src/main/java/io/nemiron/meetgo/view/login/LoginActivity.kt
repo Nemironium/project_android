@@ -5,14 +5,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import io.nemiron.meetgo.NavigationActivity
 import io.nemiron.meetgo.R
-import io.nemiron.meetgo.databinding.ActivityLoginBinding
 import io.nemiron.meetgo.core.helpers.AppPrefs
+import io.nemiron.meetgo.databinding.FragmentLoginBinding
 import io.nemiron.meetgo.view.on_boarding.OnBoardingActivity
 import org.koin.android.ext.android.inject
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var loginBinding: ActivityLoginBinding
+    private lateinit var loginBinding: FragmentLoginBinding
     private val appPrefs: AppPrefs by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
         else if (appPrefs.isLogged)
             goToNavigationActivity()
 
-        loginBinding = ActivityLoginBinding.inflate(layoutInflater)
+        loginBinding = FragmentLoginBinding.inflate(layoutInflater)
         setContentView(loginBinding.root)
     }
 

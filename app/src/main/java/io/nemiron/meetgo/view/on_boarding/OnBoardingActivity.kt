@@ -8,6 +8,8 @@ import io.nemiron.meetgo.view.login.LoginActivity
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.ActivityOnBoardingBinding
 import io.nemiron.meetgo.core.helpers.AppPrefs
+import io.nemiron.meetgo.core.helpers.hide
+import io.nemiron.meetgo.core.helpers.show
 import org.koin.android.ext.android.inject
 
 
