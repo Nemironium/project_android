@@ -24,7 +24,6 @@ class OnBoardingFragment : Fragment() {
         SlideItem(R.string.slide_header_3, R.string.slide_description_3, R.drawable.play_together)
     )
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -72,5 +71,4 @@ class OnBoardingFragment : Fragment() {
         appPrefs.isFirstTimeLaunch = false
         findNavController().navigate(R.id.action_onBoarding_to_login)
     }
-
 }

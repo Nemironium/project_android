@@ -28,7 +28,6 @@ class RegistrationFragment : Fragment() {
             findNavController().navigate(R.id.action_registration_to_changePartner)
         }
 
-        // Inflate the layout for this fragment
         return registrationBinding.root
     }
 }
