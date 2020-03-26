@@ -11,7 +11,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.nemiron.meetgo.R
-import timber.log.Timber
 
 /**
  * Manages the various graphs needed for a [BottomNavigationView].
@@ -53,7 +52,6 @@ fun BottomNavigationView.setupWithNavController(
 
         // Save to the map
         graphIdToTagMap[graphId] = fragmentTag
-        Timber.d("backStackEntryCount = ${fragmentManager.backStackEntryCount}")
 
 
         // Attach or detach nav host fragment depending on whether it's the selected item.
@@ -172,7 +170,6 @@ private fun BottomNavigationView.setupItemReselected(
 ) {
     setOnNavigationItemReselectedListener { item ->
         val newlySelectedItemTag = graphIdToTagMap[item.itemId]
-        Timber.i("newlySelectedItemTag: $newlySelectedItemTag")
         val selectedFragment = fragmentManager.findFragmentByTag(newlySelectedItemTag)
                 as NavHostFragment
         val navController = selectedFragment.navController
@@ -241,10 +238,10 @@ fun getNavHostFragment(fragmentManager: FragmentManager, navGraphId: Int, contai
     val existingFragment = fragmentManager.findFragmentById(containerId) as NavHostFragment?
     existingFragment?.let { return it }
 
-    Timber.d("getNavHostFragment CREATE new")
     val navHostFragment = NavHostFragment.create(navGraphId)
     fragmentManager.beginTransaction()
         .add(containerId, navHostFragment)
+        .setPrimaryNavigationFragment(navHostFragment)
         .commitNow()
     return navHostFragment
 }

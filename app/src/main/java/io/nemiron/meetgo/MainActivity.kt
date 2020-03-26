@@ -10,7 +10,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import io.nemiron.meetgo.core.helpers.*
 import io.nemiron.meetgo.databinding.ActivityMainBinding
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,7 +46,6 @@ class MainActivity : AppCompatActivity() {
 
 
     fun setupBottomNavigationBar() {
-        Timber.d("setupBottomNavigationBar() invoked")
         showBottomNavigation()
         val navGraphIds = listOf(R.navigation.home, R.navigation.notifications, R.navigation.profile)
         val controller = binding.bottomNav.setupWithNavController(
@@ -66,16 +64,17 @@ class MainActivity : AppCompatActivity() {
 
     fun setupLoginNavigation() {
         hideBottomNavigation()
-        val controller = MutableLiveData<NavController>()
-        val navHostFragment = getNavHostFragment(supportFragmentManager, R.navigation.login, binding.navHostContainer.id)
-        controller.value = navHostFragment.navController
-        currentNavController = controller
-        //controller.value = findNavController(binding.navHostContainer.id)
+        val navHostFragment = getNavHostFragment(
+            supportFragmentManager,
+            R.navigation.login,
+            binding.navHostContainer.id
+        )
+        currentNavController =  MutableLiveData(navHostFragment.navController)
     }
-
-    private fun setAppTheme() = setTheme(R.style.AppTheme)
 
     private fun showBottomNavigation() = binding.bottomNav.show()
 
     private fun hideBottomNavigation() = binding.bottomNav.hide()
+
+    private fun setAppTheme() = setTheme(R.style.AppTheme)
 }
