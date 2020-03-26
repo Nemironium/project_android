@@ -1,11 +1,10 @@
 package io.nemiron.meetgo.view.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.fragment.app.Fragment
 import io.nemiron.meetgo.core.helpers.AppPrefs
 import io.nemiron.meetgo.databinding.FragmentLoginBinding
 import org.koin.android.ext.android.inject

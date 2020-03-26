@@ -19,5 +19,5 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:visibility="visible"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/bottom_nav" />
 </LinearLayout>
