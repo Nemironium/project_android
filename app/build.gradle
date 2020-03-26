@@ -27,9 +27,7 @@ android {
 
     sourceSets {
         main {
-            res.srcDirs = [
-                    'src/main/res'
-            ]
+            res.srcDirs = ['src/main/res']
         }
     }
 
@@ -40,6 +38,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        animationsDisabled = true
     }
 
     viewBinding {
@@ -108,6 +110,12 @@ dependencies {
     // Testing
     testImplementation "junit:junit:$junit_version"
     testImplementation "org.koin:koin-test:$koin_version"
+
     androidTestImplementation "androidx.test.ext:junit:1.1.1"
+    androidTestImplementation "androidx.test:runner:1.2.0"
+    androidTestImplementation "androidx.test:rules:1.2.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigation_version"
+    androidTestImplementation "com.google.truth:truth:$truth_version"
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 }

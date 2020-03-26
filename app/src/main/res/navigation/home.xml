@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    app:startDestination="@id/homeScreen">
+
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="io.nemiron.meetgo.view.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_gradeTask"
+            app:destination="@id/gradeTaskScreen" />
+        <action
+            android:id="@+id/action_homeScreen_to_newTask"
+            app:destination="@id/newTaskScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gradeTaskScreen"
+        android:name="io.nemiron.meetgo.view.home.grade_task.GradeTaskFragment"
+        android:label="@string/title_grade_task"
+        tools:layout="@layout/fragment_grade_task" />
+
+    <fragment
+        android:id="@+id/newTaskScreen"
+        android:name="io.nemiron.meetgo.view.new_task.NewTaskFragment"
+        android:label="@string/title_new_task"
+        tools:layout="@layout/fragment_new_task" />
+</navigation>
