@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login"
+    app:startDestination="@id/loginScreen">
+
+    <fragment
+        android:id="@+id/loginScreen"
+        android:name="io.nemiron.meetgo.view.login.LoginFragment"
+        android:label="@string/title_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_onBoarding"
+            app:destination="@id/onBoardingScreen"
+            app:popUpTo="@id/loginScreen"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_login_to_registration"
+            app:destination="@id/registrationScreen" />
+        <action
+            android:id="@+id/action_login_to_forgotPassword"
+            app:destination="@id/forgotPasswordScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onBoardingScreen"
+        android:name="io.nemiron.meetgo.view.on_boarding.OnBoardingFragment"
+        android:label="@string/title_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" >
+        <action
+            android:id="@+id/action_onBoarding_to_login"
+            app:destination="@id/loginScreen"
+            app:popUpTo="@id/onBoardingScreen"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/registrationScreen"
+        android:name="io.nemiron.meetgo.view.login.registration.RegistrationFragment"
+        android:label="@string/title_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registration_to_changePartner"
+            app:destination="@id/changePartnerScreen"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/forgotPasswordScreen"
+        android:name="io.nemiron.meetgo.view.login.forgot_password.ForgotPasswordFragment"
+        android:label="@string/title_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/changePartnerScreen"
+        android:name="io.nemiron.meetgo.view.change_partner.ChangePartnerFragment"
+        android:label="@string/title_change_partner"
+        tools:layout="@layout/fragment_change_partner" >
+        <action
+            android:id="@+id/action_changePartner_to_home"
+            app:destination="@id/home"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <include app:graph="@navigation/home" />
+</navigation>
