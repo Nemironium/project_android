@@ -26,7 +26,7 @@ class LoginFragment : Fragment() {
         if (appPrefs.isFirstTimeLaunch) {
             navigateToOnBoarding()
         } else if (appPrefs.isLogged) {
-            // navigate to HomeFragment
+            navigateToHome()
         }
 
         loginBinding = FragmentLoginBinding.inflate(inflater, container, false)
@@ -58,8 +58,6 @@ class LoginFragment : Fragment() {
         findNavController().navigate(R.id.action_login_to_forgotPassword)
     }
 
-    private fun navigateToHome() {
-        (activity as MainActivity).setupBottomNavigationBar()
-    }
+    private fun navigateToHome() = (activity as MainActivity).setApplicationNavigation()
 
 }

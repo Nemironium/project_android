@@ -11,7 +11,7 @@ import io.nemiron.meetgo.core.helpers.*
 import io.nemiron.meetgo.databinding.ActivityMainBinding
 import org.koin.android.ext.android.inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ActivityContract {
 
     private lateinit var binding: ActivityMainBinding
     private var currentNavController: LiveData<NavController>? = null
@@ -44,8 +44,17 @@ class MainActivity : AppCompatActivity() {
         return currentNavController?.value?.navigateUp() ?: false
     }
 
+    override fun setLoginNavigation() {
+        hideNavigationHost()
+        setupLoginNavigation()
+    }
 
-    fun setupBottomNavigationBar() {
+    override fun setApplicationNavigation() {
+        hideNavigationHost()
+        setupBottomNavigationBar()
+    }
+
+    private fun setupBottomNavigationBar() {
         showBottomNavigation()
         val navGraphIds = listOf(R.navigation.home, R.navigation.notifications, R.navigation.profile)
         val controller = binding.bottomNav.setupWithNavController(
@@ -55,14 +64,13 @@ class MainActivity : AppCompatActivity() {
             intent = intent
         )
 
-        // Whenever the selected controller changes, setup the action bar.
         controller.observe(this, Observer { navController ->
             setupActionBarWithNavController(navController)
         })
         currentNavController = controller
     }
 
-    fun setupLoginNavigation() {
+    private fun setupLoginNavigation() {
         hideBottomNavigation()
         val navHostFragment = getNavHostFragment(
             supportFragmentManager,
@@ -70,6 +78,19 @@ class MainActivity : AppCompatActivity() {
             binding.navHostContainer.id
         )
         currentNavController =  MutableLiveData(navHostFragment.navController)
+    }
+
+    /*
+    * TODO (Этот костыль нужен, чтобы на экране не было лишнего фрагмента при смене графа навигации.
+    *       Нужно найти способ, чтобы этого экрана вообще не возникало и посмотреть, что с производительностью
+    *       такого решения.)
+    * */
+    private fun hideNavigationHost() {
+        supportFragmentManager.findFragmentById(R.id.nav_host_container)?.let {
+            supportFragmentManager.beginTransaction()
+                .hide(it)
+                .commit()
+        }
     }
 
     private fun showBottomNavigation() = binding.bottomNav.show()

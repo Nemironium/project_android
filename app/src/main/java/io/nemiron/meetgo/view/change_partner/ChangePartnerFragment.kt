@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import io.nemiron.meetgo.MainActivity
-import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.FragmentChangePartnerBinding
+
 
 class ChangePartnerFragment : Fragment() {
 
@@ -25,10 +24,5 @@ class ChangePartnerFragment : Fragment() {
         return binding.root
     }
 
-    private fun navigateToHome() {
-        findNavController().navigate(R.id.action_changePartner_to_home)
-       (activity as MainActivity).setupBottomNavigationBar()
-    }
-
-
+    private fun navigateToHome() = (activity as MainActivity).setApplicationNavigation()
 }
