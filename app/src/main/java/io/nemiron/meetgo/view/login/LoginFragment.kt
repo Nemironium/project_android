@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import io.nemiron.meetgo.MainActivity
+import io.nemiron.meetgo.R
 import io.nemiron.meetgo.core.helpers.AppPrefs
 import io.nemiron.meetgo.databinding.FragmentLoginBinding
 import org.koin.android.ext.android.inject
@@ -21,7 +24,7 @@ class LoginFragment : Fragment() {
     ): View? {
 
         if (appPrefs.isFirstTimeLaunch) {
-            // navigate to OnBoardingFragment
+            navigateToOnBoarding()
         } else if (appPrefs.isLogged) {
             // navigate to HomeFragment
         }
@@ -34,14 +37,29 @@ class LoginFragment : Fragment() {
 
     private fun initViews() {
         loginBinding.forgotPassword.setOnClickListener {
-            // TODO(navigate to ForgotPasswordFragment)
+            navigateToForgotPassword()
         }
 
-        loginBinding.forgotPassword.setOnClickListener {
-            // TODO(navigate to Register)
+        loginBinding.register.setOnClickListener {
+            navigateToRegistration()
         }
     }
 
 
+    private fun navigateToOnBoarding() {
+        findNavController().navigate(R.id.action_login_to_onBoarding)
+    }
+
+    private fun navigateToRegistration() {
+        findNavController().navigate(R.id.action_login_to_registration)
+    }
+
+    private fun navigateToForgotPassword() {
+        findNavController().navigate(R.id.action_login_to_forgotPassword)
+    }
+
+    private fun navigateToHome() {
+        (activity as MainActivity).setupBottomNavigationBar()
+    }
 
 }

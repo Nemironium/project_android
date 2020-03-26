@@ -22,4 +22,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_view_task">View task</string>
+    <string name="title_grade_task">Grade task</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_change_partner">Change partner</string>
+    <string name="title_new_task">New task</string>
+    <string name="title_forgot_password">Forgot password</string>
+    <string name="title_registration">Registration</string>
+    <string name="titile_on_boarding">On boarding</string>
+    <string name="title_login">Login</string>
 </resources>

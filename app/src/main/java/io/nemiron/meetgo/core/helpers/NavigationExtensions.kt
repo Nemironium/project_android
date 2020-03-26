@@ -53,6 +53,8 @@ fun BottomNavigationView.setupWithNavController(
 
         // Save to the map
         graphIdToTagMap[graphId] = fragmentTag
+        Timber.d("backStackEntryCount = ${fragmentManager.backStackEntryCount}")
+
 
         // Attach or detach nav host fragment depending on whether it's the selected item.
         if (this.selectedItemId == graphId) {
@@ -203,7 +205,6 @@ private fun attachNavHostFragment(
             }
         }
         .commitNow()
-
 }
 
 private fun obtainNavHostFragment(
@@ -235,3 +236,15 @@ private fun FragmentManager.isOnBackStack(backStackName: String): Boolean {
 }
 
 private fun getFragmentTag(index: Int) = "bottomNavigation#$index"
+
+fun getNavHostFragment(fragmentManager: FragmentManager, navGraphId: Int, containerId: Int) : NavHostFragment {
+    val existingFragment = fragmentManager.findFragmentById(containerId) as NavHostFragment?
+    existingFragment?.let { return it }
+
+    Timber.d("getNavHostFragment CREATE new")
+    val navHostFragment = NavHostFragment.create(navGraphId)
+    fragmentManager.beginTransaction()
+        .add(containerId, navHostFragment)
+        .commitNow()
+    return navHostFragment
+}
