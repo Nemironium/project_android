@@ -38,7 +38,7 @@ class LoginFragment : Fragment() {
     private fun initViews() {
         loginBinding.forgotPassword.setOnClickListener { navigateToForgotPassword() }
 
-        loginBinding.register.setOnClickListener { navigateToRegistration() }
+        loginBinding.registerButton.setOnClickListener { navigateToRegistration() }
     }
 
 
