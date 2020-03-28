@@ -48,7 +48,7 @@ class LoginScreenTest {
     }
 
     private fun assertGoToRegistration() {
-        onView(withId(R.id.register_button)).perform(click())
+        onView(withId(R.id.to_registration_button)).perform(click())
         val currentDestination = navController.backStack.last()
         assertThat(currentDestination.destination.id).isEqualTo(R.id.registrationScreen)
     }
