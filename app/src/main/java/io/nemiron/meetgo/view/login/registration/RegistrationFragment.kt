@@ -23,7 +23,7 @@ class RegistrationFragment : Fragment() {
 
         registrationBinding = FragmentRegistrationBinding.inflate(inflater, container, false)
 
-        registrationBinding.toInviteUser.setOnClickListener {
+        registrationBinding.registerButton.setOnClickListener {
             appPrefs.isLogged = true
             findNavController().navigate(R.id.action_registration_to_changePartner)
         }
