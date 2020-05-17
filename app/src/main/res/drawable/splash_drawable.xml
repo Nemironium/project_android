@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
 
-    <item android:drawable="@color/colorPurple"/>
-
-    <item>
-        <bitmap
-            android:src="@drawable/ic_logo_white"
-            android:gravity="center">
-        </bitmap>
-    </item>
-
+    <item
+        android:drawable="@color/colorPurple" />
+    <item
+        android:width="288dp"
+        android:height="288dp"
+        android:drawable="@drawable/ic_logo_white"
+        android:gravity="center"/>
 </layer-list>

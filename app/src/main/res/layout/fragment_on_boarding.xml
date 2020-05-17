@@ -37,7 +37,7 @@
         android:layout_marginBottom="32dp"
         android:minWidth="140dp"
         android:minHeight="40dp"
-        android:text="@string/get_started"
+        android:text="@string/start"
         android:textSize="16sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/dots_indicator"
@@ -70,8 +70,8 @@
         app:dotsSpacing="4dp"
         app:dotsWidthFactor="2.5"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/next_button"
-        app:layout_constraintStart_toEndOf="@+id/skip_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:progressMode="true"
         app:selectedDotColor="@color/colorPurple" />
 </androidx.constraintlayout.widget.ConstraintLayout>

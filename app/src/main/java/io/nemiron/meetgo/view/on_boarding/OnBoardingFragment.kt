@@ -19,16 +19,15 @@ class OnBoardingFragment : Fragment() {
     private lateinit var boardingBinding: FragmentOnBoardingBinding
     private val appPrefs: AppPrefs by inject()
     private val slides = listOf(
-        SlideItem(R.string.slide_header_1, R.string.slide_description_1, R.drawable.play),
-        SlideItem(R.string.slide_header_2, R.string.slide_description_2, R.drawable.play_anywhere),
-        SlideItem(R.string.slide_header_3, R.string.slide_description_3, R.drawable.play_together)
+        SlideItem(R.string.slide_header_1, R.string.slide_description_1, R.drawable.slide_do_tasks),
+        SlideItem(R.string.slide_header_2, R.string.slide_description_2, R.drawable.slide_play_partner),
+        SlideItem(R.string.slide_header_3, R.string.slide_description_3, R.drawable.slide_play_anywhere)
     )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         boardingBinding = FragmentOnBoardingBinding.inflate(inflater, container, false)
         initViewPager()
         initListeners()
@@ -44,27 +43,37 @@ class OnBoardingFragment : Fragment() {
     private fun initListeners() = with(boardingBinding) {
         slider.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageSelected(position: Int) {
-                if (position == slides.size - 1)  {
-                    nextButton.hide()
+                if (position == slides.lastIndex)  {
+                    setStartButton()
                     skipButton.hide()
-                    startButton.show()
                 } else {
-                    nextButton.show()
+                    setNextButton()
                     skipButton.show()
-                    startButton.hide()
                 }
             }
             override fun onPageScrollStateChanged(state: Int) {}
             override fun onPageScrolled(position: Int, posOffset: Float, posOffsetPixels: Int) {}
         })
 
-        startButton.setOnClickListener { navigateToLogin() }
         skipButton.setOnClickListener { navigateToLogin() }
-        nextButton.setOnClickListener {
-            val currentItem = slider.currentItem + 1
-            if (currentItem < slides.size)
-                slider.currentItem = currentItem
-        }
+        nextButton.setOnClickListener { goToNextSlide() }
+    }
+
+    private fun setStartButton() {
+        boardingBinding.nextButton.text = getText(R.string.start)
+    }
+
+    private fun setNextButton() {
+        boardingBinding.nextButton.text = getText(R.string.next)
+    }
+
+    private fun goToNextSlide() {
+        val currentItem = boardingBinding.slider.currentItem + 1
+
+        if (currentItem < slides.size)
+            boardingBinding.slider.currentItem = currentItem
+        else
+            navigateToLogin()
     }
 
     private fun navigateToLogin() {

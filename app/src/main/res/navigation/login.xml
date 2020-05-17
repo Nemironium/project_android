@@ -59,12 +59,5 @@
         android:id="@+id/changePartnerScreen"
         android:name="io.nemiron.meetgo.view.change_partner.ChangePartnerFragment"
         android:label="@string/title_change_partner"
-        tools:layout="@layout/fragment_change_partner" >
-        <action
-            android:id="@+id/action_changePartner_to_home"
-            app:destination="@id/home"
-            app:popUpTo="@id/login"
-            app:popUpToInclusive="true"/>
-    </fragment>
-    <include app:graph="@navigation/home" />
+        tools:layout="@layout/fragment_change_partner" />
 </navigation>

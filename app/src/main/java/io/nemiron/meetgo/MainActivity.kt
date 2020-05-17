@@ -23,21 +23,13 @@ class MainActivity : AppCompatActivity(), ActivityContract {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        if (savedInstanceState == null) {
-            if (!appPrefs.isLogged)
-                setupLoginNavigation()
-            else
-                setupBottomNavigationBar()
-        }
+        if (savedInstanceState == null)
+            setNavigation()
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-
-        if (!appPrefs.isLogged)
-            setupLoginNavigation()
-        else
-            setupBottomNavigationBar()
+        setNavigation()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -53,6 +45,12 @@ class MainActivity : AppCompatActivity(), ActivityContract {
         hideNavigationHost()
         setupBottomNavigationBar()
     }
+
+    private fun setNavigation() =
+        if (!appPrefs.isLogged)
+            setupLoginNavigation()
+        else
+            setupBottomNavigationBar()
 
     private fun setupBottomNavigationBar() {
         showBottomNavigation()
@@ -77,7 +75,22 @@ class MainActivity : AppCompatActivity(), ActivityContract {
             R.navigation.login,
             binding.navHostContainer.id
         )
+        navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.onBoardingScreen) {
+                hideToolBar()
+            } else {
+                showToolBar()
+            }
+        }
         currentNavController =  MutableLiveData(navHostFragment.navController)
+    }
+
+    private fun hideToolBar() {
+        supportActionBar?.hide()
+    }
+
+    private fun showToolBar() {
+        supportActionBar?.show()
     }
 
     /*

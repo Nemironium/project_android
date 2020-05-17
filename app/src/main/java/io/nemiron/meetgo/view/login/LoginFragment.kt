@@ -22,25 +22,24 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        if (appPrefs.isFirstTimeLaunch) {
-            navigateToOnBoarding()
-        } else if (appPrefs.isLogged) {
-            navigateToHome()
-        }
-
+        setDestination()
         loginBinding = FragmentLoginBinding.inflate(inflater, container, false)
         initViews()
 
         return loginBinding.root
     }
 
-    private fun initViews() {
-        loginBinding.forgotPassword.setOnClickListener { navigateToForgotPassword() }
-
-        loginBinding.toRegistrationButton.setOnClickListener { navigateToRegistration() }
+    private fun setDestination() {
+        if (appPrefs.isFirstTimeLaunch)
+            navigateToOnBoarding()
+        else if (appPrefs.isLogged)
+            navigateToHome()
     }
 
+    private fun initViews() {
+        loginBinding.forgotPassword.setOnClickListener { navigateToForgotPassword() }
+        loginBinding.toRegistrationButton.setOnClickListener { navigateToRegistration() }
+    }
 
     private fun navigateToOnBoarding() =
         findNavController().navigate(R.id.action_login_to_onBoarding)
