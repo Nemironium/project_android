@@ -11,10 +11,8 @@ class AppClass : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        // Init Timber logger
-        Timber.plant(Timber.DebugTree())
 
-        // Init Koin
+        Timber.plant(Timber.DebugTree())
         startKoin {
             androidContext(this@AppClass)
             androidLogger()

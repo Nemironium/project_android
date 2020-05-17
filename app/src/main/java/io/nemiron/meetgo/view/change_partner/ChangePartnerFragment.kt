@@ -16,8 +16,14 @@ class ChangePartnerFragment : Fragment(R.layout.fragment_change_partner) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.inviteUser.setOnClickListener { navigateToHome() }
+        initViews()
     }
 
-    private fun navigateToHome() = (activity as MainActivity).setApplicationNavigation()
+    private fun initViews() = with(binding) {
+        inviteUser.setOnClickListener { navigateToHome() }
+    }
+
+    private fun navigateToHome() {
+        (activity as MainActivity).setApplicationNavigation()
+    }
 }
