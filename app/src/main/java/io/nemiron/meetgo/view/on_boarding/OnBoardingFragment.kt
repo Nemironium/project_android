@@ -1,12 +1,11 @@
 package io.nemiron.meetgo.view.on_boarding
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
+import by.kirich1409.viewbindingdelegate.viewBinding
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.core.helpers.AppPrefs
 import io.nemiron.meetgo.core.helpers.hide
@@ -14,25 +13,16 @@ import io.nemiron.meetgo.core.helpers.show
 import io.nemiron.meetgo.databinding.FragmentOnBoardingBinding
 import org.koin.android.ext.android.inject
 
-class OnBoardingFragment : Fragment() {
+class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
 
-    private lateinit var boardingBinding: FragmentOnBoardingBinding
+    private val boardingBinding: FragmentOnBoardingBinding by viewBinding()
     private val appPrefs: AppPrefs by inject()
-    private val slides = listOf(
-        SlideItem(R.string.slide_header_1, R.string.slide_description_1, R.drawable.slide_do_tasks),
-        SlideItem(R.string.slide_header_2, R.string.slide_description_2, R.drawable.slide_play_partner),
-        SlideItem(R.string.slide_header_3, R.string.slide_description_3, R.drawable.slide_play_anywhere)
-    )
+    private val slides = Slides.slides
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        boardingBinding = FragmentOnBoardingBinding.inflate(inflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initViewPager()
         initListeners()
-
-        return boardingBinding.root
     }
 
     private fun initViewPager() = with(boardingBinding) {
