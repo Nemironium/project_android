@@ -1,27 +1,22 @@
 package io.nemiron.meetgo.view.change_partner
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import by.kirich1409.viewbindingdelegate.viewBinding
 import io.nemiron.meetgo.MainActivity
+import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.FragmentChangePartnerBinding
 
 
-class ChangePartnerFragment : Fragment() {
+class ChangePartnerFragment : Fragment(R.layout.fragment_change_partner) {
 
-    private lateinit var binding: FragmentChangePartnerBinding
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    private val binding: FragmentChangePartnerBinding by viewBinding()
 
-        binding = FragmentChangePartnerBinding.inflate(inflater, container, false)
-        binding.inviteUser.setOnClickListener {
-            navigateToHome()
-        }
-        return binding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.inviteUser.setOnClickListener { navigateToHome() }
     }
 
     private fun navigateToHome() = (activity as MainActivity).setApplicationNavigation()
