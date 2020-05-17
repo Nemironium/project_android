@@ -15,7 +15,7 @@ import org.koin.android.ext.android.inject
 
 class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
 
-    private val boardingBinding: FragmentOnBoardingBinding by viewBinding()
+    private val binding: FragmentOnBoardingBinding by viewBinding()
     private val appPrefs: AppPrefs by inject()
     private val slides = Slides.slides
 
@@ -25,12 +25,12 @@ class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
         initListeners()
     }
 
-    private fun initViewPager() = with(boardingBinding) {
+    private fun initViewPager() = with(binding) {
         slider.adapter = SlideAdapter(this@OnBoardingFragment.requireContext(), slides)
-        dotsIndicator.setViewPager(boardingBinding.slider)
+        dotsIndicator.setViewPager(binding.slider)
     }
 
-    private fun initListeners() = with(boardingBinding) {
+    private fun initListeners() = with(binding) {
         slider.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageSelected(position: Int) {
                 if (position == slides.lastIndex)  {
@@ -50,18 +50,18 @@ class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
     }
 
     private fun setStartButton() {
-        boardingBinding.nextButton.text = getText(R.string.start)
+        binding.nextButton.text = getText(R.string.start)
     }
 
     private fun setNextButton() {
-        boardingBinding.nextButton.text = getText(R.string.next)
+        binding.nextButton.text = getText(R.string.next)
     }
 
     private fun goToNextSlide() {
-        val currentItem = boardingBinding.slider.currentItem + 1
+        val currentItem = binding.slider.currentItem + 1
 
         if (currentItem < slides.size)
-            boardingBinding.slider.currentItem = currentItem
+            binding.slider.currentItem = currentItem
         else
             navigateToLogin()
     }
