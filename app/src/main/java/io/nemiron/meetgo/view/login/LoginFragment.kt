@@ -9,13 +9,11 @@ import io.nemiron.meetgo.MainActivity
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.core.helpers.AppPrefs
 import io.nemiron.meetgo.databinding.FragmentLoginBinding
-import org.koin.android.ext.android.inject
 
 
-class LoginFragment : Fragment(R.layout.fragment_login) {
+class LoginFragment(private val appPrefs: AppPrefs) : Fragment(R.layout.fragment_login) {
 
     private val binding: FragmentLoginBinding by viewBinding()
-    private val appPrefs: AppPrefs by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

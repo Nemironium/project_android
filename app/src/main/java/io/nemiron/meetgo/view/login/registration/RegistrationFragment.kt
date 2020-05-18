@@ -8,12 +8,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.core.helpers.AppPrefs
 import io.nemiron.meetgo.databinding.FragmentRegistrationBinding
-import org.koin.android.ext.android.inject
 
-class RegistrationFragment : Fragment(R.layout.fragment_registration) {
+class RegistrationFragment(private val appPrefs: AppPrefs) : Fragment(R.layout.fragment_registration) {
 
     private val binding: FragmentRegistrationBinding by viewBinding()
-    private val appPrefs: AppPrefs by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -2,12 +2,6 @@ package io.nemiron.meetgo.core.helpers
 
 import android.content.Context
 import androidx.core.content.edit
-import org.koin.android.ext.koin.androidContext
-import org.koin.dsl.module
-
-val prefModule = module {
-    single { AppPrefs(androidContext()) }
-}
 
 class AppPrefs (context: Context) {
 

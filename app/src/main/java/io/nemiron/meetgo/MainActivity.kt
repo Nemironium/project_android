@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import io.nemiron.meetgo.core.helpers.*
 import io.nemiron.meetgo.databinding.ActivityMainBinding
 import org.koin.android.ext.android.inject
+import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 
 class MainActivity : AppCompatActivity(), ActivityContract {
 
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity(), ActivityContract {
     private val appPrefs: AppPrefs by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setupKoinFragmentFactory()
         setAppTheme()
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)

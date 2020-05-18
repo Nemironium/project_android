@@ -11,12 +11,10 @@ import io.nemiron.meetgo.core.helpers.AppPrefs
 import io.nemiron.meetgo.core.helpers.hide
 import io.nemiron.meetgo.core.helpers.show
 import io.nemiron.meetgo.databinding.FragmentOnBoardingBinding
-import org.koin.android.ext.android.inject
 
-class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
+class OnBoardingFragment(private val appPrefs: AppPrefs) : Fragment(R.layout.fragment_on_boarding) {
 
     private val binding: FragmentOnBoardingBinding by viewBinding()
-    private val appPrefs: AppPrefs by inject()
     private val slides = Slides.slides
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
