@@ -23,7 +23,6 @@
         android:layout_weight="1"
         app:defaultNavHost="true"
         app:navGraph="@navigation/login">
-
     </androidx.fragment.app.FragmentContainerView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.core.helpers
+package io.nemiron.meetgo.core.extensions
 
 import android.text.Editable
 import android.text.TextWatcher

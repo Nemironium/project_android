@@ -7,7 +7,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
-import io.nemiron.meetgo.core.helpers.*
+import io.nemiron.meetgo.core.extensions.getNavHostFragment
+import io.nemiron.meetgo.core.extensions.hide
+import io.nemiron.meetgo.core.extensions.setupWithNavController
+import io.nemiron.meetgo.core.extensions.show
+import io.nemiron.meetgo.core.helpers.AppPrefs
 import io.nemiron.meetgo.databinding.ActivityMainBinding
 import org.koin.android.ext.android.inject
 import org.koin.androidx.fragment.android.setupKoinFragmentFactory
@@ -72,11 +76,12 @@ class MainActivity : AppCompatActivity(), ActivityContract {
 
     private fun setupLoginNavigation() {
         hideBottomNavigation()
-        val navHostFragment = getNavHostFragment(
-            supportFragmentManager,
-            R.navigation.login,
-            binding.navHostContainer.id
-        )
+        val navHostFragment =
+            getNavHostFragment(
+                supportFragmentManager,
+                R.navigation.login,
+                binding.navHostContainer.id
+            )
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.onBoardingScreen) {
                 hideToolBar()

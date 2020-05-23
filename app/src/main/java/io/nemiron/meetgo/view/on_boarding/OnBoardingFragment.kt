@@ -7,9 +7,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.nemiron.meetgo.R
+import io.nemiron.meetgo.core.extensions.hide
+import io.nemiron.meetgo.core.extensions.show
 import io.nemiron.meetgo.core.helpers.AppPrefs
-import io.nemiron.meetgo.core.helpers.hide
-import io.nemiron.meetgo.core.helpers.show
 import io.nemiron.meetgo.databinding.FragmentOnBoardingBinding
 
 class OnBoardingFragment(private val appPrefs: AppPrefs) : Fragment(R.layout.fragment_on_boarding) {
