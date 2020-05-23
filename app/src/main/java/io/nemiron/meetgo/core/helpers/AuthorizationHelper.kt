@@ -2,9 +2,20 @@ package io.nemiron.meetgo.core.helpers
 
 import android.content.Context
 import androidx.core.content.edit
+import com.ironz.binaryprefs.BinaryPreferencesBuilder
+import com.ironz.binaryprefs.encryption.AesValueEncryption
+import com.ironz.binaryprefs.encryption.XorKeyEncryption
+import kotlinx.serialization.toUtf8Bytes
 
 class AuthorizationHelper(context: Context) {
-    private val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+    private val prefs = BinaryPreferencesBuilder(context)
+        .name(PREF_NAME)
+        .keyEncryption(XorKeyEncryption("B<RC'njnfrkturj!".toUtf8Bytes()))
+        .valueEncryption(AesValueEncryption(
+            "Lf[yjdbxkexibq!!".toUtf8Bytes(),
+            "Itytwjxtymrhenjq".toUtf8Bytes()
+        ))
+        .build()
 
     var sessionId: String?
         get() =
