@@ -13,7 +13,7 @@ import org.koin.androidx.fragment.dsl.fragment
 import org.koin.dsl.module
 
 
-val fragmentModules = module {
+val fragmentModule = module {
     fragment { LoginFragment(get()) }
     fragment { OnBoardingFragment(get()) }
     fragment { RegistrationFragment(get()) }

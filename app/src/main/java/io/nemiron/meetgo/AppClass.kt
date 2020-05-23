@@ -1,20 +1,17 @@
 package io.nemiron.meetgo
 
 import android.app.Application
-import io.nemiron.meetgo.di.fragmentModules
-import io.nemiron.meetgo.di.preferencesModule
+import io.nemiron.meetgo.di.fragmentModule
+import io.nemiron.meetgo.di.networkModule
+import kotlinx.serialization.UnstableDefault
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
+@UnstableDefault
 class AppClass : Application() {
-    private val applicationModules = listOf(
-        preferencesModule,
-        fragmentModules
-    )
-
     override fun onCreate() {
         super.onCreate()
         initKoin()
@@ -26,7 +23,8 @@ class AppClass : Application() {
             androidContext(this@AppClass)
             androidLogger()
             fragmentFactory()
-            modules(applicationModules)
+            modules(fragmentModule)
+            modules(networkModule)
         }
     }
 

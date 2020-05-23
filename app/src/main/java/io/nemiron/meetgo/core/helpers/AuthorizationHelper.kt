@@ -24,9 +24,29 @@ class AuthorizationHelper(context: Context) {
             putString(SESSION_ID, value)
         }
 
+    var userId: String?
+        get() =
+            prefs.getString(USER_ID, null)
+        set(value) = prefs.edit {
+            putString(USER_ID, value)
+        }
+
+    var isFirstTimeLaunch: Boolean
+        get() =
+            prefs.getBoolean(IS_FIRST_TIME_LAUNCH, true)
+        set(value) = prefs.edit {
+            putBoolean(IS_FIRST_TIME_LAUNCH, value)
+        }
+
+    val isLogged: Boolean
+        get() {
+            return !userId.isNullOrBlank() && !sessionId.isNullOrBlank()
+        }
 
     companion object {
         private const val PREF_NAME = "AUTH_PREFS"
         private const val SESSION_ID = "SESSION_ID"
+        private const val USER_ID = "USER_ID"
+        private const val IS_FIRST_TIME_LAUNCH = "IS_FIRST_TIME_LAUNCH"
     }
 }
