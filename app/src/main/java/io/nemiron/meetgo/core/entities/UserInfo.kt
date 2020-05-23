@@ -1,8 +1,11 @@
 package io.nemiron.meetgo.core.entities
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class UserInfo (
-    var id: Int? = null,
-    var name: String? = null,
-    var email: String? = null,
-    var token: String? = null
+    @SerialName("profileFirstName") var firstName: String,
+    @SerialName("profileLastName") var lastName: String,
+    @SerialName("profileScreenName") var screenName: String
 )
