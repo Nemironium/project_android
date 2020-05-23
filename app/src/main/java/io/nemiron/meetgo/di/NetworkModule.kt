@@ -1,10 +1,10 @@
 package io.nemiron.meetgo.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import io.nemiron.meetgo.core.helpers.AuthorizationHelper
-import io.nemiron.meetgo.core.network.AuthorizationInterceptor
-import io.nemiron.meetgo.core.network.services.AuthorizationService
-import io.nemiron.meetgo.core.network.services.UserService
+import io.nemiron.meetgo.helpers.AuthorizationHelper
+import io.nemiron.meetgo.network.AuthorizationInterceptor
+import io.nemiron.meetgo.network.services.AuthorizationService
+import io.nemiron.meetgo.network.services.UserService
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -23,6 +23,7 @@ private val contentType = "application/json".toMediaType()
 val networkModule = module {
     single { AuthorizationHelper(androidContext()) }
 
+    /*TODO(првоерить, что работает как надо и только в DEBUG)*/
     single {
         HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
             override fun log(message: String) = Timber.d(message)

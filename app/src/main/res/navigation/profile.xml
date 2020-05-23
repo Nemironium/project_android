@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/profileScreen"
-        android:name="io.nemiron.meetgo.view.profile.ProfileFragment"
+        android:name="io.nemiron.meetgo.view.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -20,13 +20,13 @@
 
     <fragment
         android:id="@+id/settingsScreen"
-        android:name="io.nemiron.meetgo.view.profile.settings.SettingsFragment"
+        android:name="io.nemiron.meetgo.view.ui.profile.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/changePartnerScreen"
-        android:name="io.nemiron.meetgo.view.change_partner.ChangePartnerFragment"
+        android:name="io.nemiron.meetgo.view.ui.change_partner.ChangePartnerFragment"
         android:label="@string/title_change_partner"
         tools:layout="@layout/fragment_change_partner" />
 </navigation>

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/notificationsScreen"
-        android:name="io.nemiron.meetgo.view.notifications.NotificationsFragment"
+        android:name="io.nemiron.meetgo.view.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/viewTaskFragment"
-        android:name="io.nemiron.meetgo.view.notifications.view_task.ViewTaskFragment"
+        android:name="io.nemiron.meetgo.view.ui.notifications.view_task.ViewTaskFragment"
         android:label="@string/title_view_task"
         tools:layout="@layout/fragment_view_task" />
 </navigation>

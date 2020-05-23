@@ -12,7 +12,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import io.nemiron.meetgo.R
-import io.nemiron.meetgo.view.on_boarding.OnBoardingFragment
+import io.nemiron.meetgo.view.ui.on_boarding.OnBoardingFragment
 import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test

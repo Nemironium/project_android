@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/loginScreen"
-        android:name="io.nemiron.meetgo.view.login.LoginFragment"
+        android:name="io.nemiron.meetgo.view.ui.login.LoginFragment"
         android:label="@string/title_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/onBoardingScreen"
-        android:name="io.nemiron.meetgo.view.on_boarding.OnBoardingFragment"
+        android:name="io.nemiron.meetgo.view.ui.on_boarding.OnBoardingFragment"
         android:label="@string/title_on_boarding"
         tools:layout="@layout/fragment_on_boarding" >
         <action
@@ -38,7 +38,7 @@
 
     <fragment
         android:id="@+id/registrationScreen"
-        android:name="io.nemiron.meetgo.view.login.registration.RegistrationFragment"
+        android:name="io.nemiron.meetgo.view.ui.login.registration.RegistrationFragment"
         android:label="@string/title_registration"
         tools:layout="@layout/fragment_registration" >
         <action
@@ -50,14 +50,14 @@
 
     <fragment
         android:id="@+id/forgotPasswordScreen"
-        android:name="io.nemiron.meetgo.view.login.forgot_password.ForgotPasswordFragment"
+        android:name="io.nemiron.meetgo.view.ui.login.forgot_password.ForgotPasswordFragment"
         android:label="@string/title_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
     </fragment>
 
     <fragment
         android:id="@+id/changePartnerScreen"
-        android:name="io.nemiron.meetgo.view.change_partner.ChangePartnerFragment"
+        android:name="io.nemiron.meetgo.view.ui.change_partner.ChangePartnerFragment"
         android:label="@string/title_change_partner"
         tools:layout="@layout/fragment_change_partner" />
 </navigation>
