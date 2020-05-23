@@ -9,10 +9,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.core.extensions.hide
 import io.nemiron.meetgo.core.extensions.show
-import io.nemiron.meetgo.core.helpers.AppPrefs
+import io.nemiron.meetgo.core.helpers.AuthorizationHelper
 import io.nemiron.meetgo.databinding.FragmentOnBoardingBinding
 
-class OnBoardingFragment(private val appPrefs: AppPrefs) : Fragment(R.layout.fragment_on_boarding) {
+class OnBoardingFragment(private val authorizationHelper: AuthorizationHelper) : Fragment(R.layout.fragment_on_boarding) {
 
     private val binding: FragmentOnBoardingBinding by viewBinding()
     private val slides = Slides.slides
@@ -65,7 +65,7 @@ class OnBoardingFragment(private val appPrefs: AppPrefs) : Fragment(R.layout.fra
     }
 
     private fun navigateToLogin() {
-        appPrefs.isFirstTimeLaunch = false
+        authorizationHelper.isFirstTimeLaunch = false
         findNavController().navigate(R.id.action_onBoarding_to_login)
     }
 }

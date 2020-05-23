@@ -11,7 +11,7 @@ import io.nemiron.meetgo.core.extensions.getNavHostFragment
 import io.nemiron.meetgo.core.extensions.hide
 import io.nemiron.meetgo.core.extensions.setupWithNavController
 import io.nemiron.meetgo.core.extensions.show
-import io.nemiron.meetgo.core.helpers.AppPrefs
+import io.nemiron.meetgo.core.helpers.AuthorizationHelper
 import io.nemiron.meetgo.databinding.ActivityMainBinding
 import org.koin.android.ext.android.inject
 import org.koin.androidx.fragment.android.setupKoinFragmentFactory
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), ActivityContract {
 
     private lateinit var binding: ActivityMainBinding
     private var currentNavController: LiveData<NavController>? = null
-    private val appPrefs: AppPrefs by inject()
+    private val authorizationHelper: AuthorizationHelper by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setupKoinFragmentFactory()
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), ActivityContract {
     }
 
     private fun setNavigation() =
-        if (!appPrefs.isLogged)
+        if (!authorizationHelper.isLogged)
             setupLoginNavigation()
         else
             setupBottomNavigationBar()

@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.nemiron.meetgo.R
-import io.nemiron.meetgo.core.helpers.AppPrefs
+import io.nemiron.meetgo.core.helpers.AuthorizationHelper
 import io.nemiron.meetgo.databinding.FragmentRegistrationBinding
 
-class RegistrationFragment(private val appPrefs: AppPrefs) : Fragment(R.layout.fragment_registration) {
+class RegistrationFragment(private val authorizationHelper: AuthorizationHelper) : Fragment(R.layout.fragment_registration) {
 
     private val binding: FragmentRegistrationBinding by viewBinding()
 
@@ -17,7 +17,7 @@ class RegistrationFragment(private val appPrefs: AppPrefs) : Fragment(R.layout.f
         super.onViewCreated(view, savedInstanceState)
 
         binding.registerButton.setOnClickListener {
-            appPrefs.isLogged = true
+            //authorizationHelper.isLogged = true
             findNavController().navigate(R.id.action_registration_to_changePartner)
         }
     }

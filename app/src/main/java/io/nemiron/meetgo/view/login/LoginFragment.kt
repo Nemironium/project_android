@@ -7,11 +7,11 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.nemiron.meetgo.MainActivity
 import io.nemiron.meetgo.R
-import io.nemiron.meetgo.core.helpers.AppPrefs
+import io.nemiron.meetgo.core.helpers.AuthorizationHelper
 import io.nemiron.meetgo.databinding.FragmentLoginBinding
 
 
-class LoginFragment(private val appPrefs: AppPrefs) : Fragment(R.layout.fragment_login) {
+class LoginFragment(private val authorizationHelper: AuthorizationHelper) : Fragment(R.layout.fragment_login) {
 
     private val binding: FragmentLoginBinding by viewBinding()
 
@@ -22,9 +22,9 @@ class LoginFragment(private val appPrefs: AppPrefs) : Fragment(R.layout.fragment
     }
 
     private fun setDestination() {
-        if (appPrefs.isFirstTimeLaunch)
+        if (authorizationHelper.isFirstTimeLaunch)
             navigateToOnBoarding()
-        else if (appPrefs.isLogged)
+        else if (authorizationHelper.isLogged)
             navigateToHome()
     }
 
