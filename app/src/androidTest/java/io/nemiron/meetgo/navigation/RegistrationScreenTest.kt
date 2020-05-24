@@ -11,9 +11,9 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.google.common.truth.Truth.assertThat
-import io.nemiron.meetgo.view.ui.main_activity.MainActivity
 import io.nemiron.meetgo.R
-import io.nemiron.meetgo.view.ui.login.registration.RegistrationFragment
+import io.nemiron.meetgo.view.ui.main_activity.MainActivity
+import io.nemiron.meetgo.view.ui.registration.RegistrationFragment
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

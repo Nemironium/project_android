@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.view.ui.login.forgot_password
+package io.nemiron.meetgo.view.ui.forgot_password
 
 import android.os.Bundle
 import android.view.View

@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.view.ui.login.registration
+package io.nemiron.meetgo.view.ui.registration
 
 import android.os.Bundle
 import android.view.View
@@ -6,8 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.nemiron.meetgo.R
-import io.nemiron.meetgo.helpers.AuthorizationHelper
 import io.nemiron.meetgo.databinding.FragmentRegistrationBinding
+import io.nemiron.meetgo.helpers.AuthorizationHelper
+
 
 class RegistrationFragment(private val authorizationHelper: AuthorizationHelper) : Fragment(R.layout.fragment_registration) {
 
