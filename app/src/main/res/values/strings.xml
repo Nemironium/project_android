@@ -5,10 +5,10 @@
     <string name="skip">Skip</string>
     <string name="next">Next</string>
     <string name="start">Start</string>
-    <string name="slide_header_1">Выполняй задания</string>
-    <string name="slide_header_2">Играй вместе с партнёром</string>
+    <string name="slide_header_1">Получай задания</string>
+    <string name="slide_header_2">Выполняй вместе с партнёром</string>
     <string name="slide_header_3">Пользуйся на любом устройстве</string>
-    <string name="slide_description_1">Расскажи нам о своих интересах и мы дадим тебе соответствующие задания. Чем лучше выберешь категории, тем круче задание получишь!</string>
+    <string name="slide_description_1">Расскажи нам о своих интересах и мы дадим тебе соответствующие задания. Чем тщательнее выберешь категории, тем круче задание получишь!</string>
     <string name="slide_description_2">Выполнять задания нужно со вторым человеком. Можно как с друзьями, так и со второй половинкой.</string>
     <string name="slide_description_3">Получи задание на компьютере, а закончи на телефоне! Приложение доступно в Web-версии и на ОС Android.</string>
     <string name="on_boarding_image">On boarding image</string>
