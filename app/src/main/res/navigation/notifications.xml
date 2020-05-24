@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/notificationsScreen"
         android:name="io.nemiron.meetgo.view.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/notifications"
         tools:layout="@layout/fragment_notifications" >
         <action
             android:id="@+id/action_notificationsFragment_to_viewTaskFragment"
@@ -18,6 +18,6 @@
     <fragment
         android:id="@+id/viewTaskFragment"
         android:name="io.nemiron.meetgo.view.ui.notifications.view_task.ViewTaskFragment"
-        android:label="@string/title_view_task"
+        android:label="@string/view_task"
         tools:layout="@layout/fragment_view_task" />
 </navigation>

@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/login"
+    android:id="@+id/login_button"
     app:startDestination="@id/loginScreen">
 
     <fragment
         android:id="@+id/loginScreen"
         android:name="io.nemiron.meetgo.view.ui.login.LoginFragment"
-        android:label="@string/title_login"
+        android:label="@string/login"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_login_to_onBoarding"
@@ -27,7 +27,7 @@
     <fragment
         android:id="@+id/onBoardingScreen"
         android:name="io.nemiron.meetgo.view.ui.on_boarding.OnBoardingFragment"
-        android:label="@string/title_on_boarding"
+        android:label="@string/on_boarding"
         tools:layout="@layout/fragment_on_boarding" >
         <action
             android:id="@+id/action_onBoarding_to_login"
@@ -39,25 +39,25 @@
     <fragment
         android:id="@+id/registrationScreen"
         android:name="io.nemiron.meetgo.view.ui.login.registration.RegistrationFragment"
-        android:label="@string/title_registration"
+        android:label="@string/registration"
         tools:layout="@layout/fragment_registration" >
         <action
             android:id="@+id/action_registration_to_changePartner"
             app:destination="@id/changePartnerScreen"
-            app:popUpTo="@id/login"
+            app:popUpTo="@id/login_button"
             app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
         android:id="@+id/forgotPasswordScreen"
         android:name="io.nemiron.meetgo.view.ui.login.forgot_password.ForgotPasswordFragment"
-        android:label="@string/title_forgot_password"
+        android:label="@string/forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
     </fragment>
 
     <fragment
         android:id="@+id/changePartnerScreen"
         android:name="io.nemiron.meetgo.view.ui.change_partner.ChangePartnerFragment"
-        android:label="@string/title_change_partner"
+        android:label="@string/change_partner"
         tools:layout="@layout/fragment_change_partner" />
 </navigation>
