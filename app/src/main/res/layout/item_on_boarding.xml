@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/horizontal_margin"
-    android:paddingTop="@dimen/vertical_margin"
-    android:paddingRight="@dimen/horizontal_margin"
-    android:paddingBottom="@dimen/vertical_margin">
+    android:paddingLeft="@dimen/layout_horizontal_margin"
+    android:paddingTop="@dimen/layout_vertical_margin"
+    android:paddingRight="@dimen/layout_horizontal_margin"
+    android:paddingBottom="@dimen/layout_vertical_margin">
 
     <TextView
         android:id="@+id/slide_header"
@@ -25,13 +25,10 @@
         android:id="@+id/slide_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
         android:contentDescription="@string/on_boarding_image"
         app:layout_constraintBottom_toTopOf="@+id/slide_description"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.906"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slide_header"
         tools:srcCompat="@drawable/slide_do_tasks" />
@@ -41,7 +38,6 @@
         style="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/slide_image"
