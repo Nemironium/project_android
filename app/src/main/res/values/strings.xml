@@ -1,25 +1,7 @@
 <resources>
     <string name="app_name">Meet&amp;Go</string>
-    <string name="home">Home</string>
-    <string name="notifications">Notifications</string>
-    <string name="profile">Profile</string>
-    <string name="view_task">View task</string>
-    <string name="grade_task">Grade task</string>
-    <string name="settings">Settings</string>
-    <string name="change_partner">Change partner</string>
-    <string name="new_task">New task</string>
-    <string name="forgot_password">Forgot password?</string>
-    <string name="do_not_have_account">No account yet? Create one.</string>
-    <string name="registration">Registration</string>
-    <string name="on_boarding">On boarding</string>
-    <string name="login">Login</string>
 
-    <string name="email_username">Email/Username</string>
-    <string name="password">Password</string>
-    <string name="invite_partner">Invite partner</string>
-    <string name="sign_in">Sign in</string>
-    <string name="sign_up">Sign up</string>
-
+    <!--On boarding screen-->
     <string name="skip">Skip</string>
     <string name="next">Next</string>
     <string name="start">Start</string>
@@ -29,7 +11,40 @@
     <string name="slide_description_1">Расскажи нам о своих интересах и мы дадим тебе соответствующие задания. Чем лучше выберешь категории, тем круче задание получишь!</string>
     <string name="slide_description_2">Выполнять задания нужно со вторым человеком. Можно как с друзьями, так и со второй половинкой.</string>
     <string name="slide_description_3">Получи задание на компьютере, а закончи на телефоне! Приложение доступно в Web-версии и на ОС Android.</string>
-    <string name="on_boarding_image">OnBoarding image</string>
+    <string name="on_boarding_image">On boarding image</string>
+
+    <!--Login screen-->
+    <string name="sign_in">Sign in</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="do_not_have_account">No account yet? Create one</string>
+    <string name="email_username">Email/Username</string>
+    <string name="password">Password</string>
     <string name="login_image">Login image</string>
 
+    <!--Registration screen-->
+    <string name="sign_up">Sign up</string>
+    <string name="registration_image">Registration image</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="retype_password">Retype password</string>
+    <string name="already_have_account">Already registered? Login here</string>
+
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Another</item>
+    </string-array>
+
+
+
+    <string name="home">Home</string>
+    <string name="notifications">Notifications</string>
+    <string name="profile">Profile</string>
+    <string name="view_task">View task</string>
+    <string name="grade_task">Grade task</string>
+    <string name="settings">Settings</string>
+    <string name="change_partner">Change partner</string>
+    <string name="new_task">New task</string>
 </resources>
