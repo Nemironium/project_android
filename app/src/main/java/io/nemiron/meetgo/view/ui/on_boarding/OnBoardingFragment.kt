@@ -7,8 +7,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.nemiron.meetgo.R
-import io.nemiron.meetgo.helpers.AuthorizationHelper
 import io.nemiron.meetgo.databinding.FragmentOnBoardingBinding
+import io.nemiron.meetgo.extensions.hide
+import io.nemiron.meetgo.extensions.show
+import io.nemiron.meetgo.helpers.AuthorizationHelper
+import io.nemiron.meetgo.view.adapters.SlideAdapter
+
 
 class OnBoardingFragment(private val authorizationHelper: AuthorizationHelper) : Fragment(R.layout.fragment_on_boarding) {
 
@@ -22,7 +26,10 @@ class OnBoardingFragment(private val authorizationHelper: AuthorizationHelper) :
     }
 
     private fun initViewPager() = with(binding) {
-        slider.adapter = SlideAdapter(this@OnBoardingFragment.requireContext(), slides)
+        slider.adapter = SlideAdapter(
+            this@OnBoardingFragment.requireContext(),
+            slides
+        )
         dotsIndicator.setViewPager(binding.slider)
     }
 

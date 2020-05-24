@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.view.ui.on_boarding
+package io.nemiron.meetgo.view.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import io.nemiron.meetgo.R
+import io.nemiron.meetgo.model.SlideItem
 
 class SlideAdapter (private val context: Context, private val slides: List<SlideItem>): PagerAdapter() {
 

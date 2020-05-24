@@ -8,9 +8,12 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import io.nemiron.meetgo.R
-import io.nemiron.meetgo.extensions.getNavHostFragment
-import io.nemiron.meetgo.helpers.AuthorizationHelper
 import io.nemiron.meetgo.databinding.ActivityMainBinding
+import io.nemiron.meetgo.extensions.getNavHostFragment
+import io.nemiron.meetgo.extensions.hide
+import io.nemiron.meetgo.extensions.setupWithNavController
+import io.nemiron.meetgo.extensions.show
+import io.nemiron.meetgo.helpers.AuthorizationHelper
 import org.koin.android.ext.android.inject
 import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 
@@ -58,6 +61,7 @@ class MainActivity : AppCompatActivity(),
             setupBottomNavigationBar()
 
     private fun setupBottomNavigationBar() {
+        showToolBar()
         showBottomNavigation()
         val navGraphIds = listOf(
             R.navigation.home,
@@ -78,6 +82,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun setupLoginNavigation() {
+        hideToolBar()
         hideBottomNavigation()
         val navHostFragment =
             getNavHostFragment(
@@ -85,13 +90,6 @@ class MainActivity : AppCompatActivity(),
                 R.navigation.login,
                 binding.navHostContainer.id
             )
-        navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.onBoardingScreen) {
-                hideToolBar()
-            } else {
-                showToolBar()
-            }
-        }
         currentNavController =  MutableLiveData(navHostFragment.navController)
     }
 

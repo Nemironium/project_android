@@ -6,6 +6,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class LoginInfo(
     @SerialName("email") val email: String? = null,
-    @SerialName("userId") val userId: String? = null,
+    @SerialName("userId") val username: String? = null,
     @SerialName("password") val password: String
 )

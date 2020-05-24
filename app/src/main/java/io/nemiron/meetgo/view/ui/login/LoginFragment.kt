@@ -5,10 +5,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
-import io.nemiron.meetgo.view.ui.main_activity.MainActivity
 import io.nemiron.meetgo.R
-import io.nemiron.meetgo.helpers.AuthorizationHelper
 import io.nemiron.meetgo.databinding.FragmentLoginBinding
+import io.nemiron.meetgo.helpers.AuthorizationHelper
+import io.nemiron.meetgo.view.ui.main_activity.MainActivity
 
 
 class LoginFragment(private val authorizationHelper: AuthorizationHelper) : Fragment(R.layout.fragment_login) {
@@ -30,7 +30,7 @@ class LoginFragment(private val authorizationHelper: AuthorizationHelper) : Frag
 
     private fun initViews() {
         binding.forgotPassword.setOnClickListener { navigateToForgotPassword() }
-        binding.toRegistrationButton.setOnClickListener { navigateToRegistration() }
+        binding.registrationButton.setOnClickListener { navigateToRegistration() }
     }
 
     private fun navigateToOnBoarding() =
