@@ -32,10 +32,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/field_small_margin"
-            app:errorEnabled="true"
             app:layout_constraintBottom_toTopOf="@+id/login_password_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:startIconDrawable="@drawable/ic_perm_identity_accent_24dp"
+            app:startIconContentDescription="@string/account_icon"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email_field"
@@ -51,10 +53,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/field_small_margin"
-            app:errorEnabled="true"
             app:layout_constraintBottom_toTopOf="@+id/forgot_password"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:startIconDrawable="@drawable/ic_lock_outline_accent_24dp"
+            app:startIconContentDescription="@string/password_icon"
+            app:errorEnabled="true"
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_field"
