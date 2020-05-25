@@ -88,7 +88,6 @@ dependencies {
 
     // Retrofit2
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
     // Okhttp3
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
