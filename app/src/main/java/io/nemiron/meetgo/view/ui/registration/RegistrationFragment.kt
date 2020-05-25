@@ -97,19 +97,15 @@ class RegistrationFragment(private val authorizationHelper: AuthorizationHelper)
         defaultHintTextColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorPrimary))
     }
 
-    private fun showExistingUsernameError() = with(binding.usernameLayout) {
+    private fun showExistingUsernameError()   {
         binding.usernameLayout.error = getString(R.string.existing_username_error)
     }
 
-    private fun cleanUsernameError() = with(binding.usernameLayout) {
-        binding.usernameLayout.error = null
-    }
+    private fun cleanUsernameError() { binding.usernameLayout.error = null }
 
-    private fun showExistingEmailError() = with(binding.emailLayout) {
+    private fun showExistingEmailError() {
         binding.usernameLayout.error = getString(R.string.existing_email_error)
     }
 
-    private fun cleanEmailError() = with(binding.emailLayout) {
-        binding.usernameLayout.error = null
-    }
+    private fun cleanEmailError() { binding.usernameLayout.error = null }
 }
