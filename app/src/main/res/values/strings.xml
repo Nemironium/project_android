@@ -40,6 +40,11 @@
     <string name="username_icon">Username icon</string>
     <string name="email_icon">Email icon</string>
     <string name="confirm_password_icon">Confirm password icon</string>
+    <string name="check_password_icon">Password confirmed</string>
+    <string name="existing_username_error">Username already registered :(</string>
+    <string name="existing_email_error">Email already registered :(</string>
+
+
 
     <string-array name="gender_array">
         <item>Male</item>
