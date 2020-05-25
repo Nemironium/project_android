@@ -20,16 +20,26 @@
     <string name="email_username">Email/Username</string>
     <string name="password">Password</string>
     <string name="login_image">Login image</string>
+    <string name="password_icon">Password icon</string>
+    <string name="account_icon">Account icon</string>
 
     <!--Registration screen-->
     <string name="sign_up">Sign up</string>
     <string name="registration_image">Registration image</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
+    <string name="gender">Gender</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
-    <string name="retype_password">Retype password</string>
+    <string name="confirm_password">Confirm password</string>
     <string name="already_have_account">Already registered? Login here</string>
+    <string name="password_help">Password must contain 1 character, 1 digit</string>
+    <string name="gender_icon">Gender icon</string>
+    <string name="first_name_icon">First name icon</string>
+    <string name="last_name_icon">Last name icon</string>
+    <string name="username_icon">Username icon</string>
+    <string name="email_icon">Email icon</string>
+    <string name="confirm_password_icon">Confirm password icon</string>
 
     <string-array name="gender_array">
         <item>Male</item>
