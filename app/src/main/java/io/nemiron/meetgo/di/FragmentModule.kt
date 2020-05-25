@@ -1,5 +1,6 @@
 package io.nemiron.meetgo.di
 
+import androidx.navigation.fragment.NavHostFragment
 import io.nemiron.meetgo.view.ui.change_partner.ChangePartnerFragment
 import io.nemiron.meetgo.view.ui.forgot_password.ForgotPasswordFragment
 import io.nemiron.meetgo.view.ui.home.HomeFragment
@@ -14,6 +15,7 @@ import org.koin.dsl.module
 
 
 val fragmentModule = module {
+    fragment { NavHostFragment() }
     fragment { LoginFragment(get()) }
     fragment { OnBoardingFragment(get()) }
     fragment { RegistrationFragment(get()) }
