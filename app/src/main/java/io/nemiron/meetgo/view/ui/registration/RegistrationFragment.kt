@@ -12,6 +12,7 @@ import com.google.android.material.textfield.TextInputLayout.END_ICON_CUSTOM
 import com.google.android.material.textfield.TextInputLayout.END_ICON_PASSWORD_TOGGLE
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.FragmentRegistrationBinding
+import io.nemiron.meetgo.extensions.clearFocus
 import io.nemiron.meetgo.network.AuthorizationHelper
 
 
@@ -23,8 +24,12 @@ class RegistrationFragment(private val authorizationHelper: AuthorizationHelper)
         super.onViewCreated(view, savedInstanceState)
 
         setGenderDropdownAdapter()
-        showIncorrectPasswordError()
-        showCorrectPassword()
+        /*showIncorrectPasswordError()
+        showCorrectPassword()*/
+
+        binding.loginButton.setOnClickListener {
+            clearScreenFocus()
+        }
 
         binding.registerButton.setOnClickListener {
             /*authorizationHelper.sessionId = "test"
@@ -108,4 +113,6 @@ class RegistrationFragment(private val authorizationHelper: AuthorizationHelper)
     }
 
     private fun cleanEmailError() { binding.usernameLayout.error = null }
+
+    private fun clearScreenFocus() = requireActivity().clearFocus(view)
 }
