@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.interactors
+package io.nemiron.meetgo.usecase
 
 import io.nemiron.meetgo.domain.entities.RegistrationInfo
 

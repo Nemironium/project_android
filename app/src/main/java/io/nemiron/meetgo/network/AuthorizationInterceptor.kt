@@ -1,7 +1,6 @@
 package io.nemiron.meetgo.network
 
 import io.nemiron.meetgo.BuildConfig
-import io.nemiron.meetgo.helpers.AuthorizationHelper
 import okhttp3.Interceptor
 import okhttp3.Response
 

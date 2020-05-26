@@ -12,7 +12,7 @@ import com.google.android.material.textfield.TextInputLayout.END_ICON_CUSTOM
 import com.google.android.material.textfield.TextInputLayout.END_ICON_PASSWORD_TOGGLE
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.FragmentRegistrationBinding
-import io.nemiron.meetgo.helpers.AuthorizationHelper
+import io.nemiron.meetgo.network.AuthorizationHelper
 
 
 class RegistrationFragment(private val authorizationHelper: AuthorizationHelper) : Fragment(R.layout.fragment_registration) {

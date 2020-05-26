@@ -1,7 +1,7 @@
 package io.nemiron.meetgo.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import io.nemiron.meetgo.helpers.AuthorizationHelper
+import io.nemiron.meetgo.network.AuthorizationHelper
 import io.nemiron.meetgo.network.AuthorizationInterceptor
 import io.nemiron.meetgo.network.services.AuthorizationService
 import io.nemiron.meetgo.network.services.UserService

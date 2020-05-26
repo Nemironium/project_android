@@ -10,7 +10,7 @@ import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.FragmentOnBoardingBinding
 import io.nemiron.meetgo.extensions.hide
 import io.nemiron.meetgo.extensions.show
-import io.nemiron.meetgo.helpers.AuthorizationHelper
+import io.nemiron.meetgo.network.AuthorizationHelper
 import io.nemiron.meetgo.view.adapters.SlideAdapter
 
 

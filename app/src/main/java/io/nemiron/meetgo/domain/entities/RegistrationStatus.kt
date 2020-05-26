@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.domain
+package io.nemiron.meetgo.domain.entities
 
 enum class RegistrationStatus {
     EMPTY_FIRST_NAME,
