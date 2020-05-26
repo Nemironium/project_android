@@ -1,6 +1,7 @@
 package io.nemiron.meetgo.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import io.nemiron.meetgo.data.apiclients.AuthorizationClientImpl
 import io.nemiron.meetgo.network.AuthorizationHelper
 import io.nemiron.meetgo.network.AuthorizationInterceptor
 import io.nemiron.meetgo.network.services.AuthorizationService
@@ -48,4 +49,6 @@ val networkModule = module {
     single { get<Retrofit>().create(AuthorizationService::class.java) }
 
     single { get<Retrofit>().create(UserService::class.java) }
+
+    single { AuthorizationClientImpl(get()) }
 }

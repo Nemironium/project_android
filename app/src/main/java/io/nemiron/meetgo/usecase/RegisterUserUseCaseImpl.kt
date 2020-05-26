@@ -1,10 +1,10 @@
 package io.nemiron.meetgo.usecase
 
-import io.nemiron.meetgo.data.repositories.RegistrationRepository
+import io.nemiron.meetgo.data.repositories.AuthorizationRepository
 import io.nemiron.meetgo.domain.entities.RegistrationInfo
 
 class RegisterUserUseCaseImpl(
-    private val repository: RegistrationRepository
+    private val repository: AuthorizationRepository
 ) : RegisterUserUseCase {
 
     override fun invoke(registrationInfo: RegistrationInfo) {

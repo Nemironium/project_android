@@ -1,5 +1,6 @@
 package io.nemiron.meetgo.network.services
 
+import io.nemiron.meetgo.domain.entities.LoginInfo
 import io.nemiron.meetgo.domain.entities.RegistrationInfo
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -11,5 +12,5 @@ interface AuthorizationService {
     suspend fun register(@Body registrationInfo: RegistrationInfo): Call<ResponseBody>
 
     @POST("login/")
-    suspend fun login(@Body registrationInfo: RegistrationInfo): Call<ResponseBody>
+    suspend fun login(@Body loginInfo: LoginInfo): Call<ResponseBody>
 }
