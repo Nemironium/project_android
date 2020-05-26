@@ -1,6 +1,6 @@
 package io.nemiron.meetgo.network.services
 
-import io.nemiron.meetgo.model.entities.RegistrationInfo
+import io.nemiron.meetgo.domain.entities.RegistrationInfo
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body

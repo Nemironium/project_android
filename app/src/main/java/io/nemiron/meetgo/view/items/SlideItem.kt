@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.model
+package io.nemiron.meetgo.view.items
 
 data class SlideItem(
     val headerResId: Int,

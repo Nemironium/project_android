@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.model.entities
+package io.nemiron.meetgo.domain.entities
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

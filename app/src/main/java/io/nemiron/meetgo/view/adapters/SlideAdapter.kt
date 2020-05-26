@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import io.nemiron.meetgo.R
-import io.nemiron.meetgo.model.SlideItem
+import io.nemiron.meetgo.view.items.SlideItem
 
 class SlideAdapter (private val context: Context, private val slides: List<SlideItem>): PagerAdapter() {
 

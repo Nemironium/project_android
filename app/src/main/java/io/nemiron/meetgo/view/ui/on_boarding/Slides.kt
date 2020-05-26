@@ -1,7 +1,7 @@
 package io.nemiron.meetgo.view.ui.on_boarding
 
 import io.nemiron.meetgo.R
-import io.nemiron.meetgo.model.SlideItem
+import io.nemiron.meetgo.view.items.SlideItem
 
 object Slides {
     val slides = listOf(

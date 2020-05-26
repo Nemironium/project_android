@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.model
+package io.nemiron.meetgo.domain
 
 enum class RegistrationStatus {
     EMPTY_FIRST_NAME,
@@ -14,5 +14,6 @@ enum class RegistrationStatus {
     INCORRECT_PASSWORD,
     EMPTY_CONFIRM_PASSWORD,
     NOT_CONFIRMED_PASSWORD,
-    NO_NETWORK
+    NO_NETWORK,
+    VALIDATED
 }
