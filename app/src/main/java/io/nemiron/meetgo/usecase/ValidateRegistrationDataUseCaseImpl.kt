@@ -1,12 +1,13 @@
 package io.nemiron.meetgo.usecase
 
-import io.nemiron.meetgo.domain.entities.Gender
-import io.nemiron.meetgo.domain.entities.RegistrationInfo
-import io.nemiron.meetgo.domain.entities.RegistrationStatus
-import io.nemiron.meetgo.domain.entities.RegistrationStatus.*
+import io.nemiron.domain.entities.Gender
+import io.nemiron.domain.entities.RegistrationInfo
+import io.nemiron.domain.entities.RegistrationStatus
+import io.nemiron.domain.entities.RegistrationStatus.*
 import io.nemiron.meetgo.extensions.isValidEmail
 import io.nemiron.meetgo.extensions.isValidPassword
 import io.nemiron.meetgo.extensions.isValidUsername
+import io.nemiron.usecase.ValidateRegistrationDataUseCase
 
 
 class ValidateRegistrationDataUseCaseImpl : ValidateRegistrationDataUseCase {

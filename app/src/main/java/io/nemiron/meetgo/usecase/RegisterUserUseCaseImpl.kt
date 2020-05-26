@@ -1,7 +1,8 @@
 package io.nemiron.meetgo.usecase
 
-import io.nemiron.meetgo.data.repositories.AuthorizationRepository
-import io.nemiron.meetgo.domain.entities.RegistrationInfo
+import io.nemiron.data.repositories.AuthorizationRepository
+import io.nemiron.domain.entities.RegistrationInfo
+import io.nemiron.usecase.RegisterUserUseCase
 
 class RegisterUserUseCaseImpl(
     private val repository: AuthorizationRepository

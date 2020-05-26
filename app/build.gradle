@@ -117,4 +117,8 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_version"
     androidTestImplementation "com.google.truth:truth:$truth_version"
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
+
+    implementation project(':domain')
+    implementation project(':usecase')
+    implementation project(':data')
 }
