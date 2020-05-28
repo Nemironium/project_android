@@ -1,9 +1,9 @@
 package io.nemiron.usecase
 
 import io.nemiron.domain.entities.RegistrationDataState
-import io.nemiron.domain.entities.RegistrationInfo
+import io.nemiron.usecase.entities.RegistrationData
 
 
 interface ValidateRegistrationDataUseCase {
-    operator fun invoke(registrationInfo: RegistrationInfo): RegistrationDataState
+    operator fun invoke(registrationData: RegistrationData): RegistrationDataState
 }

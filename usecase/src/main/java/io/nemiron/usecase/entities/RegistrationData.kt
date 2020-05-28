@@ -7,5 +7,5 @@ data class RegistrationData (
      val username: String,
      val email: String,
      val password: String,
-     val confirmPassword: String
+     val confirmPassword: String = ""
 )

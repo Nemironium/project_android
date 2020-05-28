@@ -1,8 +1,8 @@
 package io.nemiron.usecase
 
 import io.nemiron.domain.entities.RegistrationAnswer
-import io.nemiron.domain.entities.RegistrationInfo
+import io.nemiron.usecase.entities.RegistrationData
 
 interface RegisterUserUseCase {
-    operator fun invoke(registrationInfo: RegistrationInfo): RegistrationAnswer
+    operator fun invoke(registrationData: RegistrationData): RegistrationAnswer
 }
