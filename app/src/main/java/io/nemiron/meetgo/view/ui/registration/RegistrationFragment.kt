@@ -14,22 +14,36 @@ import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.FragmentRegistrationBinding
 import io.nemiron.meetgo.extensions.clearFocus
 import io.nemiron.meetgo.network.AuthorizationHelper
+import io.nemiron.meetgo.view.viewmodels.RegistrationViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class RegistrationFragment(private val authorizationHelper: AuthorizationHelper) : Fragment(R.layout.fragment_registration) {
 
     private val binding: FragmentRegistrationBinding by viewBinding()
 
+    private val registrationViewModel: RegistrationViewModel by viewModel()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setGenderDropdownAdapter()
-        /*showIncorrectPasswordError()
-        showCorrectPassword()*/
 
-        binding.loginButton.setOnClickListener {
+
+        /*binding.loginButton.setOnClickListener {
             clearScreenFocus()
-        }
+            with(binding) {
+                val data = RegistrationInfo(
+                    firstNameField.text.toString(),
+                    lastNameField.text.toString(),
+                    Gender.getGender(genderField.text.toString()),
+                    emailField.text.toString(),
+                    usernameField.text.toString(),
+                    passwordField.text.toString(),
+                    confirmPasswordField.text.toString()
+                )
+                Timber.d(data.toString())
+            }
+        }*/
 
         binding.registerButton.setOnClickListener {
             /*authorizationHelper.sessionId = "test"
