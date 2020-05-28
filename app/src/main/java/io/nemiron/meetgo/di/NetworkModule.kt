@@ -28,7 +28,9 @@ val networkModule = module {
     single {
         HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
             override fun log(message: String) = Timber.d(message)
-        })
+        }).apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
     }
 
     single {
