@@ -195,6 +195,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/field_medium_margin"
             android:text="@string/sign_up"
+            android:enabled="false"
             app:layout_constraintBottom_toTopOf="@+id/login_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
