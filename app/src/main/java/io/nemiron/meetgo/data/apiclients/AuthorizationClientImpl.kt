@@ -8,7 +8,10 @@ import io.nemiron.meetgo.network.services.AuthorizationService
 class AuthorizationClientImpl(private val authorizationService: AuthorizationService) :
     AuthorizationClient {
     override suspend fun registerUser(registrationInfo: RegistrationInfo) {
-        TODO("Should invoke authorizationService.register and return result")
+
+        val response = authorizationService.register(registrationInfo)
+
+
 
     }
 

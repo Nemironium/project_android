@@ -1,22 +1,23 @@
 package io.nemiron.meetgo.view.states
 
+
 class RegistrationScreenState(
     /* состояние когда username не уникальный (нужен ответ от сервера) */
     var isUsernameError: Boolean = false,
 
-    /* состояние когда username не валидный */
+    /* состояние, когда username не валидный */
     var isUsernameHighlighted: Boolean = false,
 
-    /* состояние когда email не уникальный (нужен ответ от сервера) */
+    /* состояние, когда email не уникальный (нужен ответ от сервера) */
     var isEmailError: Boolean = false,
 
-    /* состояние когда email не валидный */
+    /* состояние, когда email не валидный */
     var isEmailHighlighted: Boolean = false,
 
-    /* состояние когда password ВАЛИДНЫЙ */
+    /* состояние, когда password ВАЛИДНЫЙ */
     var isPasswordHighlighted: Boolean = false,
 
-    /* состояние когда пароли совпадают */
+    /* состояние, когда пароли совпадают */
     var isPasswordConfirmed: Boolean = false,
 
     /* состояние, когда идёт загрузка данных */
@@ -24,6 +25,12 @@ class RegistrationScreenState(
 
     /* состояние, когда все данные на экране валидные */
     var isRegisterButtonEnabled: Boolean = false,
+
+    /* состояние, когда нет интернета */
+    var isNetworkUnavailable: Boolean = false,
+
+    /* состояние, когда есть ошибка с сервера */
+    var isServerError: Boolean = false,
 
     /* состояние после успешной регистрации */
     var isSuccessRegistration: Boolean = false
