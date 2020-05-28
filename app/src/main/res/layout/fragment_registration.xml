@@ -214,12 +214,10 @@
             android:id="@+id/registration_progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/login_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
         <androidx.constraintlayout.widget.Group
@@ -228,7 +226,7 @@
             android:layout_height="0dp"
             app:constraint_referenced_ids="first_name_layout, last_name_layout, gender_layout,
             username_layout, email_layout, password_layout, @+id/confirm_password_layout,
-            register_button, login_button" >
+            login_button" >
         </androidx.constraintlayout.widget.Group>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

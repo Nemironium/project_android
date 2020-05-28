@@ -143,4 +143,16 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     private fun processRegisterButton(mode: Boolean?) {
         binding.registerButton.isEnabled = mode == true
     }
+
+    private fun disableViews() = with(binding) {
+        registrationGroup.isEnabled = false
+        registerButton.hide()
+        registrationProgressBar.show()
+    }
+
+    private fun enableViews() = with(binding) {
+        registrationGroup.isEnabled = true
+        registerButton.show()
+        registrationProgressBar.hide()
+    }
 }
