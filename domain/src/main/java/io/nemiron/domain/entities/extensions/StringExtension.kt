@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.extensions
+package io.nemiron.domain.entities.extensions
 
 fun String.isValidEmail(): Boolean {
     val expression = """^[\w.+-]+@[\w.+-]+\.[a-zA-Z]{2,8}$""".toRegex()
@@ -11,7 +11,7 @@ fun String.isValidPassword(): Boolean {
 }
 
 fun String.isValidUsername(): Boolean {
-    val expression = """^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$""".toRegex()
+    val expression = """^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$""".toRegex()
     return this.matches(expression)
 }
 

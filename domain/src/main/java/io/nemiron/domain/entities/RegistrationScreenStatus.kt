@@ -1,6 +1,6 @@
 package io.nemiron.domain.entities
 
-enum class RegistrationStatus {
+enum class RegistrationScreenStatus {
     EMPTY_FIRST_NAME,
     EMPTY_LAST_NAME,
     EMPTY_GENDER,
@@ -15,5 +15,6 @@ enum class RegistrationStatus {
     EMPTY_CONFIRM_PASSWORD,
     NOT_CONFIRMED_PASSWORD,
     NO_NETWORK,
-    VALIDATED
+    VALIDATED,
+    REGISTERED
 }

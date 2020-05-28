@@ -18,7 +18,7 @@ val fragmentModule = module {
     fragment { NavHostFragment() }
     fragment { LoginFragment(get()) }
     fragment { OnBoardingFragment(get()) }
-    fragment { RegistrationFragment(get()) }
+    fragment { RegistrationFragment() }
     fragment { ForgotPasswordFragment() }
     fragment { ChangePartnerFragment() }
     fragment { HomeFragment() }

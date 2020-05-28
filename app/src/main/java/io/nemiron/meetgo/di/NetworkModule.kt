@@ -1,6 +1,7 @@
 package io.nemiron.meetgo.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import io.nemiron.data.apiclients.AuthorizationClient
 import io.nemiron.meetgo.data.apiclients.AuthorizationClientImpl
 import io.nemiron.meetgo.network.AuthorizationHelper
 import io.nemiron.meetgo.network.AuthorizationInterceptor
@@ -17,7 +18,7 @@ import retrofit2.Retrofit
 import timber.log.Timber
 
 
-private const val BASE_URL = "127.0.0.1:8000"
+private const val BASE_URL = "http://127.0.0.1:8000/"
 private val contentType = "application/json".toMediaType()
 
 @UnstableDefault
@@ -52,5 +53,5 @@ val networkModule = module {
 
     single { get<Retrofit>().create(UserService::class.java) }
 
-    single { AuthorizationClientImpl(get()) }
+    single { AuthorizationClientImpl(get()) as AuthorizationClient }
 }
