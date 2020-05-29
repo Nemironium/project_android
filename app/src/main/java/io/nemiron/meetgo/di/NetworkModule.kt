@@ -1,12 +1,13 @@
 package io.nemiron.meetgo.di
 
+import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import io.nemiron.data.apiclients.AuthorizationClient
+import io.nemiron.meetgo.data.apiclients.AuthorizationClient
 import io.nemiron.meetgo.data.apiclients.AuthorizationClientImpl
-import io.nemiron.meetgo.network.AuthorizationHelper
-import io.nemiron.meetgo.network.AuthorizationInterceptor
-import io.nemiron.meetgo.network.services.AuthorizationService
-import io.nemiron.meetgo.network.services.UserService
+import io.nemiron.meetgo.data.network.AuthorizationHelper
+import io.nemiron.meetgo.data.network.AuthorizationInterceptor
+import io.nemiron.meetgo.data.network.services.AuthorizationService
+import io.nemiron.meetgo.data.network.services.UserService
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -18,7 +19,7 @@ import retrofit2.Retrofit
 import timber.log.Timber
 
 
-private const val BASE_URL = "http://127.0.0.1:8000/"
+private const val BASE_URL = "http://31.134.153.174/"
 private val contentType = "application/json".toMediaType()
 
 @UnstableDefault
@@ -46,6 +47,7 @@ val networkModule = module {
             .client(get<OkHttpClient>())
             .baseUrl(BASE_URL)
             .addConverterFactory(Json.asConverterFactory(contentType))
+            .addCallAdapterFactory(NetworkResponseAdapterFactory())
             .build()
     }
 
