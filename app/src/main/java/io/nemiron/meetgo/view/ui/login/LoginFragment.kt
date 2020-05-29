@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.nemiron.meetgo.R
+import io.nemiron.meetgo.data.network.AuthorizationHelper
 import io.nemiron.meetgo.databinding.FragmentLoginBinding
-import io.nemiron.meetgo.network.AuthorizationHelper
 import io.nemiron.meetgo.view.ui.main_activity.MainActivity
 
 

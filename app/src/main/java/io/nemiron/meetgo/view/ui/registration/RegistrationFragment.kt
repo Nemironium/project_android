@@ -16,6 +16,7 @@ import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.FragmentRegistrationBinding
 import io.nemiron.meetgo.extensions.clearFocus
 import io.nemiron.meetgo.extensions.hide
+import io.nemiron.meetgo.extensions.invisible
 import io.nemiron.meetgo.extensions.show
 import io.nemiron.meetgo.view.states.RegistrationScreenState
 import io.nemiron.meetgo.view.viewmodels.RegistrationViewModel
@@ -42,7 +43,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         emailField.doAfterTextChanged { viewModel.email = it?.toString() ?: "" }
         passwordField.doAfterTextChanged { viewModel.password = it?.toString() ?: "" }
         confirmPasswordField.doAfterTextChanged { viewModel.confirmPassword = it?.toString() ?: "" }
-        registerButton.setOnClickListener { requireActivity().clearFocus(view); viewModel.submitRegistration() }
+        registerButton.setOnClickListener { onRegisterButtonClicked() }
         loginButton.setOnClickListener { findNavController().popBackStack() }
     }
 
@@ -60,6 +61,8 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         if (state?.isSuccessRegistration == true) {
             findNavController().navigate(R.id.action_registration_to_changePartner)
             return
+        } else {
+            enableViews()
         }
         processUsernameError(state?.isUsernameError)
         processUsernameHighlighting(state?.isUsernameHighlighted)
@@ -92,7 +95,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
     private fun processEmailError(mode: Boolean?) {
         binding.emailLayout.error = if (mode == true)
-            getString(R.string.existing_username_error)
+            getString(R.string.existing_email_error)
         else
             null
     }
@@ -140,13 +143,17 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             hide()
     }
 
-    private fun processRegisterButton(mode: Boolean?) {
-        binding.registerButton.isEnabled = mode == true
+    private fun processRegisterButton(mode: Boolean?) { binding.registerButton.isEnabled = mode == true }
+
+    private fun onRegisterButtonClicked() {
+        requireActivity().clearFocus(view)
+        disableViews()
+        viewModel.submitRegistration()
     }
 
     private fun disableViews() = with(binding) {
         registrationGroup.isEnabled = false
-        registerButton.hide()
+        registerButton.invisible()
         registrationProgressBar.show()
     }
 

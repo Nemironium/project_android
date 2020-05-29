@@ -8,12 +8,12 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import io.nemiron.meetgo.R
+import io.nemiron.meetgo.data.network.AuthorizationHelper
 import io.nemiron.meetgo.databinding.ActivityMainBinding
 import io.nemiron.meetgo.extensions.getNavHostFragment
 import io.nemiron.meetgo.extensions.hide
 import io.nemiron.meetgo.extensions.setupWithNavController
 import io.nemiron.meetgo.extensions.show
-import io.nemiron.meetgo.network.AuthorizationHelper
 import org.koin.android.ext.android.inject
 import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 

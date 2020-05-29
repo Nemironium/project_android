@@ -7,10 +7,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.nemiron.meetgo.R
+import io.nemiron.meetgo.data.network.AuthorizationHelper
 import io.nemiron.meetgo.databinding.FragmentOnBoardingBinding
 import io.nemiron.meetgo.extensions.hide
 import io.nemiron.meetgo.extensions.show
-import io.nemiron.meetgo.network.AuthorizationHelper
 import io.nemiron.meetgo.view.adapters.SlideAdapter
 
 
