@@ -27,7 +27,7 @@ class RegisterUserUseCaseImpl(
             is NetworkResponse.UnknownError -> {
                 registrationAnswer.error = CommonError.UNEXPECTED_ERROR
             }
-            is NetworkResponse.ServerError -> when(registration.handleServerError<Unit>()) {
+            is NetworkResponse.ServerError -> when(registration.handleServerError()) {
                 ServerError.USERNAME_NOT_UNIQUE -> registrationAnswer.isUsernameUnique = false
                 ServerError.EMAIL_NOT_UNIQUE -> registrationAnswer.isEmailUnique = false
                 else -> registrationAnswer.error = CommonError.SERVER_ERROR

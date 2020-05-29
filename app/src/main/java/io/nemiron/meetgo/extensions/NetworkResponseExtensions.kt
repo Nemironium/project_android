@@ -17,5 +17,5 @@ enum class ServerError(val code: Int?) {
     }
 }
 
-fun <T>NetworkResponse.ServerError<ErrorResponse>.handleServerError(): ServerError =
+fun NetworkResponse.ServerError<ErrorResponse>.handleServerError(): ServerError =
     ServerError.getServerError(this.body?.error?.code)
