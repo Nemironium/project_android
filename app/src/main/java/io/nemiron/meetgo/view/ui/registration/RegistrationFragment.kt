@@ -10,8 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout.END_ICON_CUSTOM
 import com.google.android.material.textfield.TextInputLayout.END_ICON_PASSWORD_TOGGLE
+import io.nemiron.domain.entities.CommonError
+import io.nemiron.domain.entities.CommonError.*
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.FragmentRegistrationBinding
 import io.nemiron.meetgo.extensions.clearFocus
@@ -32,6 +35,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         viewModel.state.observe(viewLifecycleOwner, Observer { handleState(it) })
+        viewModel.errorMessage.observe(viewLifecycleOwner, Observer { showError(it) })
     }
 
     private fun initViews() = with(binding) {
@@ -161,5 +165,18 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         registrationGroup.isEnabled = true
         registerButton.show()
         registrationProgressBar.hide()
+    }
+
+    private fun showError(error: CommonError) {
+        when(error) {
+            NO_NETWORK -> showSnackBar(R.string.no_network_error)
+            SERVER_ERROR -> showSnackBar(R.string.server_error)
+            UNEXPECTED_ERROR -> showSnackBar(R.string.unexpected_error)
+            NONE -> return
+        }
+    }
+
+    private fun showSnackBar(resId: Int) {
+        Snackbar.make(binding.root, resId, Snackbar.LENGTH_SHORT).show()
     }
 }

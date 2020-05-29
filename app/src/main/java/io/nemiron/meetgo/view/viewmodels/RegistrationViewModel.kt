@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import io.nemiron.domain.entities.CommonError
 import io.nemiron.domain.entities.Gender
 import io.nemiron.domain.entities.RegistrationInfo
+import io.nemiron.meetgo.extensions.SingleLiveEvent
 import io.nemiron.meetgo.usecase.RegisterUserUseCase
 import io.nemiron.meetgo.usecase.ValidateRegistrationDataUseCase
 import io.nemiron.meetgo.view.states.RegistrationScreenState
@@ -17,10 +19,18 @@ class RegistrationViewModel(
 ) : ViewModel() {
 
     private val _state = MutableLiveData<RegistrationScreenState>()
+    private val _errorMessage = SingleLiveEvent<CommonError>()
 
     val state: LiveData<RegistrationScreenState>
         get() = _state
 
+    val errorMessage: LiveData<CommonError>
+        get() = _errorMessage
+
+    /*
+    * These vars can be simplified by using data binding.
+    * But I think this is so painful to edit XML files
+    * */
     var firstName = ""
         set(value) {
             field = value
@@ -81,6 +91,8 @@ class RegistrationViewModel(
                 isSuccessRegistration = registration.isSuccessful,
                 isProgressIndicated = false
             ))
+
+            _errorMessage.postValue(registration.error)
         }
     }
 

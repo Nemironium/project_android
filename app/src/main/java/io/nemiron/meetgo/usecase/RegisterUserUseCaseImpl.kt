@@ -1,6 +1,7 @@
 package io.nemiron.meetgo.usecase
 
 import com.haroldadmin.cnradapter.NetworkResponse
+import io.nemiron.domain.entities.CommonError
 import io.nemiron.domain.entities.RegistrationAnswer
 import io.nemiron.domain.entities.RegistrationInfo
 import io.nemiron.meetgo.data.repositories.AuthorizationRepository
@@ -22,18 +23,18 @@ class RegisterUserUseCaseImpl(
                 registrationAnswer.isSuccessful = true
             }
             is NetworkResponse.NetworkError -> {
-                registrationAnswer.isNetworkError = true
+                registrationAnswer.error = CommonError.NO_NETWORK
             }
             is NetworkResponse.UnknownError -> {
-                registrationAnswer.isUnexpectedError = true
+                registrationAnswer.error = CommonError.UNEXPECTED_ERROR
+                Timber.e("UnexpectedError: $registration")
             }
             is NetworkResponse.ServerError -> when(registration.handleServerError<Unit>()) {
                 ServerError.USERNAME_NOT_UNIQUE -> registrationAnswer.isUsernameUnique = false
                 ServerError.EMAIL_NOT_UNIQUE -> registrationAnswer.isEmailUnique = false
-                else -> registrationAnswer.isServerError = true
+                else -> registrationAnswer.error = CommonError.SERVER_ERROR
             }
         }
-        Timber.d(registrationAnswer.toString())
         return registrationAnswer
     }
 }

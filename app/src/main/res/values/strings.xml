@@ -43,6 +43,9 @@
     <string name="check_password_icon">Password confirmed</string>
     <string name="existing_username_error">Username already registered :(</string>
     <string name="existing_email_error">Email already registered :(</string>
+    <string name="no_network_error">Please check your internet connection</string>
+    <string name="unexpected_error">Unexpected error :(. Please inform developer</string>
+    <string name="server_error">Unexpected server error :(. Please inform developer</string>
 
 
 
