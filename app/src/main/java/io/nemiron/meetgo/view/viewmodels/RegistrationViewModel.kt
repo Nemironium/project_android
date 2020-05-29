@@ -1,9 +1,6 @@
 package io.nemiron.meetgo.view.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import io.nemiron.domain.entities.CommonError
 import io.nemiron.domain.entities.Gender
 import io.nemiron.domain.entities.RegistrationInfo
@@ -22,7 +19,7 @@ class RegistrationViewModel(
     private val _errorMessage = SingleLiveEvent<CommonError>()
 
     val state: LiveData<RegistrationScreenState>
-        get() = _state
+        get() = _state.distinctUntilChanged()
 
     val errorMessage: LiveData<CommonError>
         get() = _errorMessage
