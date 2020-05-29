@@ -17,10 +17,7 @@ import io.nemiron.domain.entities.CommonError
 import io.nemiron.domain.entities.CommonError.*
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.FragmentRegistrationBinding
-import io.nemiron.meetgo.extensions.clearFocus
-import io.nemiron.meetgo.extensions.hide
-import io.nemiron.meetgo.extensions.invisible
-import io.nemiron.meetgo.extensions.show
+import io.nemiron.meetgo.extensions.*
 import io.nemiron.meetgo.view.states.RegistrationScreenState
 import io.nemiron.meetgo.view.viewmodels.RegistrationViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -156,22 +153,23 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     }
 
     private fun disableViews() = with(binding) {
-        registrationGroup.isEnabled = false
+        layout.disableElements()
         registerButton.invisible()
         registrationProgressBar.show()
     }
 
     private fun enableViews() = with(binding) {
-        registrationGroup.isEnabled = true
+        layout.enableElements()
         registerButton.show()
         registrationProgressBar.hide()
     }
 
     private fun showError(error: CommonError) {
         when(error) {
-            NO_NETWORK -> showSnackBar(R.string.no_network_error)
+            NETWORK_UNAVAILABLE -> showSnackBar(R.string.no_network_error)
             SERVER_ERROR -> showSnackBar(R.string.server_error)
             UNEXPECTED_ERROR -> showSnackBar(R.string.unexpected_error)
+            SERVER_UNAVAILABLE -> showSnackBar(R.string.server_unavailable)
             NONE -> return
         }
     }

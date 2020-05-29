@@ -46,6 +46,7 @@
     <string name="no_network_error">Please check your internet connection</string>
     <string name="unexpected_error">Unexpected error :(. Please inform developer</string>
     <string name="server_error">Unexpected server error :(. Please inform developer</string>
+    <string name="server_unavailable">Server unavailable. Please inform developer</string>
 
 
 

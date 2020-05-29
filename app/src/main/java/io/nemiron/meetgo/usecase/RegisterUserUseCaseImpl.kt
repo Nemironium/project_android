@@ -7,7 +7,6 @@ import io.nemiron.domain.entities.RegistrationInfo
 import io.nemiron.meetgo.data.repositories.AuthorizationRepository
 import io.nemiron.meetgo.extensions.ServerError
 import io.nemiron.meetgo.extensions.handleServerError
-import timber.log.Timber
 
 class RegisterUserUseCaseImpl(
     private val repository: AuthorizationRepository
@@ -22,12 +21,11 @@ class RegisterUserUseCaseImpl(
             is NetworkResponse.Success -> {
                 registrationAnswer.isSuccessful = true
             }
-            is NetworkResponse.NetworkError -> {
-                registrationAnswer.error = CommonError.NO_NETWORK
+            is NetworkResponse.NetworkError ->  {
+                registrationAnswer.error = CommonError.getConnectionError(registration.error)
             }
             is NetworkResponse.UnknownError -> {
                 registrationAnswer.error = CommonError.UNEXPECTED_ERROR
-                Timber.e("UnexpectedError: $registration")
             }
             is NetworkResponse.ServerError -> when(registration.handleServerError<Unit>()) {
                 ServerError.USERNAME_NOT_UNIQUE -> registrationAnswer.isUsernameUnique = false
