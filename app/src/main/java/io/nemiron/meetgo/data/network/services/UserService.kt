@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.network.services
+package io.nemiron.meetgo.data.network.services
 
 import io.nemiron.domain.entities.UserInfo
 import retrofit2.Call
@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface UserService {
-    @GET("profiles/{id}/")
+    @GET("profiles/{id}")
     suspend fun getUserInfo(@Path("id") userId: Int): Call<UserInfo>
 }

@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.network
+package io.nemiron.meetgo.data.network
 
 import io.nemiron.meetgo.BuildConfig
 import okhttp3.Interceptor

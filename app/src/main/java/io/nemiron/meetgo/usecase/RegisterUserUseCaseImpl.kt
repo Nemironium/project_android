@@ -1,15 +1,39 @@
 package io.nemiron.meetgo.usecase
 
-import io.nemiron.data.repositories.AuthorizationRepository
+import com.haroldadmin.cnradapter.NetworkResponse
 import io.nemiron.domain.entities.RegistrationAnswer
-import io.nemiron.usecase.RegisterUserUseCase
-import io.nemiron.usecase.entities.RegistrationData
+import io.nemiron.domain.entities.RegistrationInfo
+import io.nemiron.meetgo.data.repositories.AuthorizationRepository
+import io.nemiron.meetgo.extensions.ServerError
+import io.nemiron.meetgo.extensions.handleServerError
+import timber.log.Timber
 
 class RegisterUserUseCaseImpl(
     private val repository: AuthorizationRepository
 ) : RegisterUserUseCase {
 
-    override fun invoke(registrationData: RegistrationData): RegistrationAnswer {
-        TODO("Should invoke repository and return correct status from server")
+    override suspend fun invoke(
+        registrationInfo: RegistrationInfo
+    ): RegistrationAnswer {
+
+        val registrationAnswer = RegistrationAnswer()
+        when(val registration = repository.registerUser(registrationInfo)) {
+            is NetworkResponse.Success -> {
+                registrationAnswer.isSuccessful = true
+            }
+            is NetworkResponse.NetworkError -> {
+                registrationAnswer.isNetworkError = true
+            }
+            is NetworkResponse.UnknownError -> {
+                registrationAnswer.isUnexpectedError = true
+            }
+            is NetworkResponse.ServerError -> when(registration.handleServerError<Unit>()) {
+                ServerError.USERNAME_NOT_UNIQUE -> registrationAnswer.isUsernameUnique = false
+                ServerError.EMAIL_NOT_UNIQUE -> registrationAnswer.isEmailUnique = false
+                else -> registrationAnswer.isServerError = true
+            }
+        }
+        Timber.d(registrationAnswer.toString())
+        return registrationAnswer
     }
 }

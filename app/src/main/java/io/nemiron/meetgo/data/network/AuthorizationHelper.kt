@@ -1,4 +1,4 @@
-package io.nemiron.meetgo.network
+package io.nemiron.meetgo.data.network
 
 import android.content.Context
 import androidx.core.content.edit
