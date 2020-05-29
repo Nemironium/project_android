@@ -4,10 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import io.nemiron.domain.entities.Gender
+import io.nemiron.domain.entities.RegistrationInfo
+import io.nemiron.meetgo.usecase.RegisterUserUseCase
+import io.nemiron.meetgo.usecase.ValidateRegistrationDataUseCase
 import io.nemiron.meetgo.view.states.RegistrationScreenState
-import io.nemiron.usecase.RegisterUserUseCase
-import io.nemiron.usecase.ValidateRegistrationDataUseCase
-import io.nemiron.usecase.entities.RegistrationData
 import kotlinx.coroutines.launch
 
 class RegistrationViewModel(
@@ -64,25 +65,31 @@ class RegistrationViewModel(
 
     fun submitRegistration() {
         viewModelScope.launch {
-            registerUserUseCase(
-                RegistrationData(
+            val registration = registerUserUseCase(
+                RegistrationInfo(
                     firstName,
                     lastName,
-                    gender,
+                    Gender.getGender(gender),
                     username,
                     email,
                     password
                 )
             )
+            _state.postValue(RegistrationScreenState(
+                isUsernameError = !registration.isUsernameUnique,
+                isEmailError = !registration.isEmailUnique,
+                isSuccessRegistration = registration.isSuccessful,
+                isProgressIndicated = false
+            ))
         }
     }
 
     private fun validateForm() {
         val validation = validateUseCase(
-            RegistrationData(
+            RegistrationInfo(
                 firstName,
                 lastName,
-                gender,
+                Gender.getGender(gender),
                 username,
                 email,
                 password,
