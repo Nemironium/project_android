@@ -1,5 +1,3 @@
 rootProject.name='Meet&Go'
 include ':app'
 include ':domain'
-include ':usecase'
-include ':data'

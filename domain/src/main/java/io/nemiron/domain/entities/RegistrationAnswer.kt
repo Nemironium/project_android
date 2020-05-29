@@ -1,9 +1,10 @@
 package io.nemiron.domain.entities
 
 data class RegistrationAnswer(
-    val isUsernameUnique: Boolean,
-    val isEmailUnique: Boolean,
-    val isSuccessful: Boolean,
-    val isNetworkError: Boolean,
-    val isServerError: Boolean
+    var isUsernameUnique: Boolean = true,
+    var isEmailUnique: Boolean = true,
+    var isSuccessful: Boolean = false,
+    var isNetworkError: Boolean = false,
+    var isServerError: Boolean = false,
+    var isUnexpectedError: Boolean = false
 )
