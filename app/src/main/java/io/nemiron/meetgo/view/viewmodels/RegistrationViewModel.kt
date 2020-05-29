@@ -85,7 +85,7 @@ class RegistrationViewModel(
                     password
                 )
             )
-            _state.postValue(RegistrationScreenState(
+            _state.postValue(state.value?.copy(
                 isUsernameError = !registration.isUsernameUnique,
                 isEmailError = !registration.isEmailUnique,
                 isSuccessRegistration = registration.isSuccessful,

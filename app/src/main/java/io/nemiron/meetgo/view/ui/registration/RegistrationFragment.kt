@@ -25,7 +25,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
     private val binding: FragmentRegistrationBinding by viewBinding()
-
     private val viewModel: RegistrationViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -164,6 +163,9 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         registrationProgressBar.hide()
     }
 
+    /*
+    * TODO(move network errors to another layer)
+    * */
     private fun showError(error: CommonError) {
         when(error) {
             NETWORK_UNAVAILABLE -> showSnackBar(R.string.no_network_error)
