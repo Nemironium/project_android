@@ -30,8 +30,12 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-        viewModel.state.observe(viewLifecycleOwner, Observer { handleState(it) })
-        viewModel.errorMessage.observe(viewLifecycleOwner, Observer { showError(it) })
+        viewModel.state.observe(viewLifecycleOwner, Observer { it?.let {
+            handleState(it)
+        } })
+        viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
+            showError(it)
+        })
     }
 
     private fun initViews() = with(binding) {
@@ -57,32 +61,32 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         )
     }
 
-    private fun handleState(state: RegistrationScreenState?) {
-        if (state?.isSuccessRegistration == true) {
+    private fun handleState(state: RegistrationScreenState) {
+        if (state.isSuccessRegistration) {
             findNavController().navigate(R.id.action_registration_to_changePartner)
             return
         } else {
             enableViews()
         }
-        processUsernameError(state?.isUsernameError)
-        processUsernameHighlighting(state?.isUsernameHighlighted)
-        processEmailError(state?.isEmailError)
-        processEmailHighlighting(state?.isEmailHighlighted)
-        processPasswordField(state?.isPasswordHighlighted)
-        processConfirmPasswordField(state?.isPasswordConfirmed)
-        processProgressBar(state?.isProgressIndicated)
-        processRegisterButton(state?.isRegisterButtonEnabled)
+        processUsernameError(state.isUsernameError)
+        processUsernameHighlighting(state.isUsernameHighlighted)
+        processEmailError(state.isEmailError)
+        processEmailHighlighting(state.isEmailHighlighted)
+        processPasswordField(state.isPasswordHighlighted)
+        processConfirmPasswordField(state.isPasswordConfirmed)
+        processProgressBar(state.isProgressIndicated)
+        processRegisterButton(state.isRegisterButtonEnabled)
     }
 
-    private fun processUsernameError(mode: Boolean?) {
-        binding.usernameLayout.error = if (mode == true)
+    private fun processUsernameError(mode: Boolean) {
+        binding.usernameLayout.error = if (mode)
             getString(R.string.existing_username_error)
         else
             null
     }
 
-    private fun processUsernameHighlighting(mode: Boolean?) = with(binding.usernameLayout) {
-        if (mode == true) {
+    private fun processUsernameHighlighting(mode: Boolean) = with(binding.usernameLayout) {
+        if (mode) {
             isCounterEnabled = true
             defaultHintTextColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorError))
             setBoxStrokeColorStateList(ContextCompat.getColorStateList(context, R.color.text_invalid_input_box_stroke)!!)
@@ -93,15 +97,15 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         }
     }
 
-    private fun processEmailError(mode: Boolean?) {
-        binding.emailLayout.error = if (mode == true)
+    private fun processEmailError(mode: Boolean) {
+        binding.emailLayout.error = if (mode)
             getString(R.string.existing_email_error)
         else
             null
     }
 
-    private fun processEmailHighlighting(mode: Boolean?) = with(binding.emailLayout) {
-        defaultHintTextColor = if (mode == true) {
+    private fun processEmailHighlighting(mode: Boolean) = with(binding.emailLayout) {
+        defaultHintTextColor = if (mode) {
             setBoxStrokeColorStateList(ContextCompat.getColorStateList(context, R.color.text_invalid_input_box_stroke)!!)
             ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorError))
         } else {
@@ -110,8 +114,8 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         }
     }
 
-    private fun processPasswordField(mode: Boolean?) = with(binding.passwordLayout) {
-        if (mode == true) {
+    private fun processPasswordField(mode: Boolean) = with(binding.passwordLayout) {
+        if (mode) {
             isCounterEnabled = false
             defaultHintTextColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorAccept))
             setBoxStrokeColorStateList(ContextCompat.getColorStateList(context, R.color.text_accept_input_box_stroke)!!)
@@ -122,8 +126,8 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         }
     }
 
-    private fun processConfirmPasswordField(mode: Boolean?) = with(binding.confirmPasswordLayout) {
-        if (mode == true) {
+    private fun processConfirmPasswordField(mode: Boolean) = with(binding.confirmPasswordLayout) {
+        if (mode) {
             endIconMode = END_ICON_CUSTOM
             endIconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_check_circle_accept_24dp)
             defaultHintTextColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorAccept))
@@ -136,14 +140,14 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         }
     }
 
-    private fun processProgressBar(mode: Boolean?) = with(binding.registrationProgressBar) {
-        if (mode == true)
+    private fun processProgressBar(mode: Boolean) = with(binding.registrationProgressBar) {
+        if (mode)
             show()
         else
             hide()
     }
 
-    private fun processRegisterButton(mode: Boolean?) { binding.registerButton.isEnabled = mode == true }
+    private fun processRegisterButton(mode: Boolean) { binding.registerButton.isEnabled = mode == true }
 
     private fun onRegisterButtonClicked() {
         requireActivity().clearFocus(view)
