@@ -70,29 +70,6 @@ class RegistrationViewModel(
             validateForm()
         }
 
-    fun submitRegistration() {
-        viewModelScope.launch {
-            val registration = registerUserUseCase(
-                RegistrationInfo(
-                    firstName,
-                    lastName,
-                    Gender.getGender(gender),
-                    username,
-                    email,
-                    password
-                )
-            )
-            _state.postValue(state.value?.copy(
-                isUsernameError = !registration.isUsernameUnique,
-                isEmailError = !registration.isEmailUnique,
-                isSuccessRegistration = registration.isSuccessful,
-                isProgressIndicated = false
-            ))
-
-            _errorMessage.postValue(registration.error)
-        }
-    }
-
     private fun validateForm() {
         val validation = validateUseCase(
             RegistrationInfo(
@@ -106,12 +83,39 @@ class RegistrationViewModel(
             )
         )
 
-        _state.postValue(RegistrationScreenState(
+        _state.postValue(RegistrationScreenState().copy(
             isUsernameHighlighted = !validation.isUsernameCorrect,
             isEmailHighlighted = !validation.isEmailCorrect,
             isPasswordHighlighted = validation.isPasswordStrong,
             isPasswordConfirmed = validation.isPasswordConfirmed,
             isRegisterButtonEnabled = validation.isAllValid
         ))
+    }
+
+    fun submitRegistration() {
+        _state.value = _state.value?.copy(isProgressIndicated = true)
+        registerAsync()
+    }
+
+    private fun registerAsync() = viewModelScope.launch {
+        val registration = registerUserUseCase(
+            RegistrationInfo(
+                firstName,
+                lastName,
+                Gender.getGender(gender),
+                username,
+                email,
+                password
+            )
+        )
+        _state.postValue(
+            _state.value?.copy(
+                isUsernameError = !registration.isUsernameUnique,
+                isEmailError = !registration.isEmailUnique,
+                isSuccessRegistration = registration.isSuccessful,
+                isProgressIndicated = false
+            )
+        )
+        _errorMessage.postValue(registration.error)
     }
 }

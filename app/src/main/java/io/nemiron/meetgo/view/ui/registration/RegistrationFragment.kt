@@ -64,16 +64,14 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         if (state.isSuccessRegistration) {
             findNavController().navigate(R.id.action_registration_to_changePartner)
             return
-        } else {
-            enableViews()
         }
+        processProgressIndicating(state.isProgressIndicated)
         processUsernameError(state.isUsernameError)
         processUsernameHighlighting(state.isUsernameHighlighted)
         processEmailError(state.isEmailError)
         processEmailHighlighting(state.isEmailHighlighted)
         processPasswordField(state.isPasswordHighlighted)
         processConfirmPasswordField(state.isPasswordConfirmed)
-        processProgressBar(state.isProgressIndicated)
         processRegisterButton(state.isRegisterButtonEnabled)
     }
 
@@ -129,29 +127,23 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         }
     }
 
-    private fun processProgressBar(mode: Boolean) = if (mode)
-        binding.registrationProgressBar.show()
-    else
-        binding.registrationProgressBar.hide()
+    private fun processProgressIndicating(mode: Boolean) = with(binding) {
+        if (mode) {
+            layout.disableElements()
+            registerButton.invisible()
+            registrationProgressBar.show()
+        } else {
+            layout.enableElements()
+            registerButton.show()
+            registrationProgressBar.hide()
+        }
+    }
 
     private fun processRegisterButton(mode: Boolean) { binding.registerButton.isEnabled = mode == true }
 
     private fun onRegisterButtonClicked() {
         requireActivity().clearFocus(view)
-        disableViews()
         viewModel.submitRegistration()
-    }
-
-    private fun disableViews() = with(binding) {
-        layout.disableElements()
-        registerButton.invisible()
-        registrationProgressBar.show()
-    }
-
-    private fun enableViews() = with(binding) {
-        layout.enableElements()
-        registerButton.show()
-        registrationProgressBar.hide()
     }
 
     /*
