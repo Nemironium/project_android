@@ -17,12 +17,20 @@ class RegistrationViewModel(
 
     private val _state = MutableLiveData<RegistrationScreenState>()
     private val _errorMessage = SingleLiveEvent<CommonError>()
+    private val _navigateToNextScreen = SingleLiveEvent<Any>()
 
     val state: LiveData<RegistrationScreenState>
         get() = _state.distinctUntilChanged()
 
     val errorMessage: LiveData<CommonError>
         get() = _errorMessage
+
+    val navigateToNextScreen: LiveData<Any>
+        get() = _navigateToNextScreen
+
+    private val registrationInfo: RegistrationInfo
+        get() = RegistrationInfo(firstName, lastName, Gender.getGender(gender),
+            username, email, password, confirmPassword)
 
     /*
     * These vars can be simplified by using data binding.
@@ -70,25 +78,13 @@ class RegistrationViewModel(
             validateForm()
         }
 
-    private fun validateForm() {
-        val validation = validateUseCase(
-            RegistrationInfo(
-                firstName,
-                lastName,
-                Gender.getGender(gender),
-                username,
-                email,
-                password,
-                confirmPassword
-            )
-        )
-
+    private fun validateForm() = with(validateUseCase(registrationInfo)) {
         _state.postValue(RegistrationScreenState().copy(
-            isUsernameHighlighted = !validation.isUsernameCorrect,
-            isEmailHighlighted = !validation.isEmailCorrect,
-            isPasswordHighlighted = validation.isPasswordStrong,
-            isPasswordConfirmed = validation.isPasswordConfirmed,
-            isRegisterButtonEnabled = validation.isAllValid
+            isUsernameHighlighted = !isUsernameCorrect,
+            isEmailHighlighted = !isEmailCorrect,
+            isPasswordHighlighted = isPasswordStrong,
+            isPasswordConfirmed = isPasswordConfirmed,
+            isRegisterButtonEnabled = isAllValid
         ))
     }
 
@@ -98,24 +94,16 @@ class RegistrationViewModel(
     }
 
     private fun registerAsync() = viewModelScope.launch {
-        val registration = registerUserUseCase(
-            RegistrationInfo(
-                firstName,
-                lastName,
-                Gender.getGender(gender),
-                username,
-                email,
-                password
-            )
-        )
-        _state.postValue(
-            _state.value?.copy(
-                isUsernameError = !registration.isUsernameUnique,
-                isEmailError = !registration.isEmailUnique,
-                isSuccessRegistration = registration.isSuccessful,
+        with(registerUserUseCase(registrationInfo)) {
+            _state.postValue(_state.value?.copy(
+                isUsernameError = !isUsernameUnique,
+                isEmailError = !isEmailUnique,
                 isProgressIndicated = false
-            )
-        )
-        _errorMessage.postValue(registration.error)
+            ))
+            if (error != CommonError.NONE)
+                _errorMessage.postValue(error)
+            if (isSuccessful)
+                _navigateToNextScreen.call()
+        }
     }
 }

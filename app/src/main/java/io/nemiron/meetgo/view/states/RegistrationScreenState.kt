@@ -23,8 +23,5 @@ data class RegistrationScreenState(
     val isProgressIndicated: Boolean = false,
 
     /* состояние, когда все данные на экране валидные */
-    val isRegisterButtonEnabled: Boolean = false,
-
-    /* состояние после успешной регистрации */
-    val isSuccessRegistration: Boolean = false
+    val isRegisterButtonEnabled: Boolean = false
 )

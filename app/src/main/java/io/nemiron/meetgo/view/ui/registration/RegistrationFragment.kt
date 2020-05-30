@@ -35,6 +35,9 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
             showError(it)
         })
+        viewModel.navigateToNextScreen.observe(viewLifecycleOwner, Observer {
+            findNavController().navigate(R.id.action_registration_to_changePartner)
+        })
     }
 
     private fun initViews() = with(binding) {
@@ -61,10 +64,6 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     }
 
     private fun handleState(state: RegistrationScreenState) {
-        if (state.isSuccessRegistration) {
-            findNavController().navigate(R.id.action_registration_to_changePartner)
-            return
-        }
         processProgressIndicating(state.isProgressIndicated)
         processUsernameError(state.isUsernameError)
         processUsernameHighlighting(state.isUsernameHighlighted)
@@ -155,7 +154,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             SERVER_ERROR -> showSnackBar(R.string.server_error)
             UNEXPECTED_ERROR -> showSnackBar(R.string.unexpected_error)
             SERVER_UNAVAILABLE -> showSnackBar(R.string.server_unavailable)
-            NONE -> return
+            else -> return
         }
     }
 
