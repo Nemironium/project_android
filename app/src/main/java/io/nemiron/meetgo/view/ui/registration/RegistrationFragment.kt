@@ -1,6 +1,5 @@
 package io.nemiron.meetgo.view.ui.registration
 
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -88,12 +87,10 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     private fun processUsernameHighlighting(mode: Boolean) = with(binding.usernameLayout) {
         if (mode) {
             isCounterEnabled = true
-            defaultHintTextColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorError))
-            setBoxStrokeColorStateList(ContextCompat.getColorStateList(context, R.color.text_invalid_input_box_stroke)!!)
+            setErrorColor()
         } else {
             isCounterEnabled = false
-            defaultHintTextColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorPrimary))
-            setBoxStrokeColorStateList(ContextCompat.getColorStateList(context, R.color.text_default_input_box_stroke)!!)
+            setDefaultColor()
         }
     }
 
@@ -104,25 +101,19 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             null
     }
 
-    private fun processEmailHighlighting(mode: Boolean) = with(binding.emailLayout) {
-        defaultHintTextColor = if (mode) {
-            setBoxStrokeColorStateList(ContextCompat.getColorStateList(context, R.color.text_invalid_input_box_stroke)!!)
-            ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorError))
-        } else {
-            setBoxStrokeColorStateList(ContextCompat.getColorStateList(context, R.color.text_default_input_box_stroke)!!)
-            ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorPrimary))
-        }
-    }
+    private fun processEmailHighlighting(mode: Boolean) = if (mode)
+        binding.emailLayout.setErrorColor()
+    else
+        binding.emailLayout.setDefaultColor()
+
 
     private fun processPasswordField(mode: Boolean) = with(binding.passwordLayout) {
         if (mode) {
             isCounterEnabled = false
-            defaultHintTextColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorAccept))
-            setBoxStrokeColorStateList(ContextCompat.getColorStateList(context, R.color.text_accept_input_box_stroke)!!)
+            setAcceptColor()
         } else {
             isCounterEnabled = true
-            defaultHintTextColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorPrimary))
-            setBoxStrokeColorStateList(ContextCompat.getColorStateList(context, R.color.text_default_input_box_stroke)!!)
+            setDefaultColor()
         }
     }
 
@@ -130,22 +121,18 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         if (mode) {
             endIconMode = END_ICON_CUSTOM
             endIconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_check_circle_accept_24dp)
-            defaultHintTextColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorAccept))
             setEndIconContentDescription(R.string.check_password_icon)
-            setBoxStrokeColorStateList(ContextCompat.getColorStateList(context, R.color.text_accept_input_box_stroke)!!)
+            setAcceptColor()
         } else {
             endIconMode = END_ICON_PASSWORD_TOGGLE
-            defaultHintTextColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorPrimary))
-            setBoxStrokeColorStateList(ContextCompat.getColorStateList(context, R.color.text_default_input_box_stroke)!!)
+            setDefaultColor()
         }
     }
 
-    private fun processProgressBar(mode: Boolean) = with(binding.registrationProgressBar) {
-        if (mode)
-            show()
-        else
-            hide()
-    }
+    private fun processProgressBar(mode: Boolean) = if (mode)
+        binding.registrationProgressBar.show()
+    else
+        binding.registrationProgressBar.hide()
 
     private fun processRegisterButton(mode: Boolean) { binding.registerButton.isEnabled = mode == true }
 
