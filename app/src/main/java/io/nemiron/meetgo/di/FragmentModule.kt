@@ -16,7 +16,7 @@ import org.koin.dsl.module
 
 val fragmentModule = module {
     fragment { NavHostFragment() }
-    fragment { LoginFragment(get()) }
+    fragment { LoginFragment() }
     fragment { OnBoardingFragment(get()) }
     fragment { RegistrationFragment() }
     fragment { ForgotPasswordFragment() }

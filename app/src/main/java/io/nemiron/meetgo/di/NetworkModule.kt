@@ -4,7 +4,8 @@ import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import io.nemiron.meetgo.data.apiclients.AuthorizationClient
 import io.nemiron.meetgo.data.apiclients.AuthorizationClientImpl
-import io.nemiron.meetgo.data.network.AuthorizationHelper
+import io.nemiron.meetgo.data.managers.AuthorizationManager
+import io.nemiron.meetgo.data.managers.AuthorizationManagerImpl
 import io.nemiron.meetgo.data.network.AuthorizationInterceptor
 import io.nemiron.meetgo.data.network.services.AuthorizationService
 import io.nemiron.meetgo.data.network.services.UserService
@@ -24,9 +25,9 @@ private val contentType = "application/json".toMediaType()
 
 @UnstableDefault
 val networkModule = module {
-    single { AuthorizationHelper(androidContext()) }
+    single { AuthorizationManagerImpl(androidContext()) as AuthorizationManager }
 
-    /*TODO(првоерить, что работает как надо и только в DEBUG)*/
+    /*TODO(проверить, что работает как надо и только в DEBUG)*/
     single {
         HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
             override fun log(message: String) = Timber.d(message)
