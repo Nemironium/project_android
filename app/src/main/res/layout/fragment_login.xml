@@ -8,6 +8,7 @@
     tools:context=".view.ui.login.LoginFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loginLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/layout_horizontal_margin"
@@ -24,10 +25,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/login_email_layout"/>
+            app:layout_constraintBottom_toTopOf="@+id/username_layout"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login_email_layout"
+            android:id="@+id/username_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +41,7 @@
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email_field"
+                android:id="@+id/username_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email_username"
@@ -107,18 +108,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/registration_button"
             tools:visibility="visible" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/login_group"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:constraint_referenced_ids="registration_button, forgot_password,
-             login_button, login_password_layout, login_email_layout" >
-        </androidx.constraintlayout.widget.Group>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
