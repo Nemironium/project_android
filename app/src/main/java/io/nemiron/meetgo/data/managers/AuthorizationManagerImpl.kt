@@ -1,14 +1,14 @@
-package io.nemiron.meetgo.data.network
+package io.nemiron.meetgo.data.managers
 
 import android.content.Context
 import androidx.core.content.edit
 import com.ironz.binaryprefs.BinaryPreferencesBuilder
 import com.ironz.binaryprefs.encryption.AesValueEncryption
 import com.ironz.binaryprefs.encryption.XorKeyEncryption
-import io.nemiron.meetgo.data.managers.AuthorizationManager
 import kotlinx.serialization.toUtf8Bytes
+import timber.log.Timber
 
-class AuthorizationHelper(context: Context) : AuthorizationManager {
+class AuthorizationManagerImpl(context: Context) : AuthorizationManager {
     private val prefs = BinaryPreferencesBuilder(context)
         .name(PREF_NAME)
         .keyEncryption(XorKeyEncryption("B<RC'njnfrkturj!".toUtf8Bytes()))
@@ -18,17 +18,19 @@ class AuthorizationHelper(context: Context) : AuthorizationManager {
         ))
         .build()
 
-    var sessionId: String?
+    override var sessionId: String?
         get() =
             prefs.getString(SESSION_ID, null)
         set(value) = prefs.edit {
+            Timber.d("set sessionId: $value")
             putString(SESSION_ID, value)
         }
 
-    var userId: String?
+    override var userId: String?
         get() =
             prefs.getString(USER_ID, null)
         set(value) = prefs.edit {
+            Timber.d("set userId: $value")
             putString(USER_ID, value)
         }
 
@@ -39,13 +41,11 @@ class AuthorizationHelper(context: Context) : AuthorizationManager {
             putBoolean(IS_FIRST_TIME_LAUNCH, value)
         }
 
-    override fun saveUserCredentials(userId: String?, sessionId: String?) {
-        this.userId = userId
-        this.sessionId = sessionId
-    }
-
-    override val isLogged: Boolean
-        get() = !userId.isNullOrBlank() && !sessionId.isNullOrBlank()
+    override val isUserLogged: Boolean
+        get() {
+            Timber.d("userId: $userId sessionId: $sessionId")
+            return !userId.isNullOrBlank() && !sessionId.isNullOrBlank()
+        }
 
     companion object {
         private const val PREF_NAME = "AUTH_PREFS"

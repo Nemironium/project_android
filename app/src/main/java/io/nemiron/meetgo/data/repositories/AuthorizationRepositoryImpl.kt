@@ -16,7 +16,7 @@ class AuthorizationRepositoryImpl(
         get() = authorizationManager.isFirstTimeLaunch
 
     override val isUserLogged: Boolean
-        get() = authorizationManager.isLogged
+        get() = authorizationManager.isUserLogged
 
     override suspend fun registerUser(registrationInfo: RegistrationInfo): NetworkResponse<Unit, ErrorResponse> {
         val result = authorizationClient.registerUser(registrationInfo)
@@ -32,10 +32,8 @@ class AuthorizationRepositoryImpl(
 
     private fun saveCredentials(response: NetworkResponse<Unit, ErrorResponse>) {
         if (response is NetworkResponse.Success) {
-            authorizationManager.saveUserCredentials(
-                response.headers?.get("userId"),
-                response.headers?.get("userId")
-            )
+            authorizationManager.sessionId = response.headers?.get("sessionId")
+            authorizationManager.userId = response.headers?.get("userId")
         }
     }
 }
