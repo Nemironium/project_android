@@ -7,14 +7,16 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import io.nemiron.meetgo.R
-import io.nemiron.meetgo.data.network.AuthorizationHelper
 import io.nemiron.meetgo.databinding.FragmentOnBoardingBinding
 import io.nemiron.meetgo.extensions.hide
 import io.nemiron.meetgo.extensions.show
+import io.nemiron.meetgo.usecase.ShowOnBoardingUseCase
 import io.nemiron.meetgo.view.adapters.SlideAdapter
 
 
-class OnBoardingFragment(private val authorizationHelper: AuthorizationHelper) : Fragment(R.layout.fragment_on_boarding) {
+class OnBoardingFragment(
+    private val showOnBoardingUseCase: ShowOnBoardingUseCase
+) : Fragment(R.layout.fragment_on_boarding) {
 
     private val binding: FragmentOnBoardingBinding by viewBinding()
     private val slides = Slides.slides
@@ -70,7 +72,7 @@ class OnBoardingFragment(private val authorizationHelper: AuthorizationHelper) :
     }
 
     private fun navigateToLogin() {
-        authorizationHelper.isFirstTimeLaunch = false
+        showOnBoardingUseCase()
         findNavController().navigate(R.id.action_onBoarding_to_login)
     }
 }

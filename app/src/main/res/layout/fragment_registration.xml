@@ -8,7 +8,7 @@
     tools:context=".view.ui.registration.RegistrationFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout"
+        android:id="@+id/registrationLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/layout_horizontal_margin"

@@ -17,8 +17,9 @@ import io.nemiron.domain.entities.CommonError.*
 import io.nemiron.meetgo.R
 import io.nemiron.meetgo.databinding.FragmentRegistrationBinding
 import io.nemiron.meetgo.extensions.*
-import io.nemiron.meetgo.view.states.RegistrationScreenState
 import io.nemiron.meetgo.view.viewmodels.RegistrationViewModel
+import io.nemiron.meetgo.view.viewmodels.RegistrationViewModel.RegistrationNavigation.TO_LOGIN
+import io.nemiron.meetgo.view.viewmodels.RegistrationViewModel.RegistrationNavigation.TO_TAGS
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
@@ -29,15 +30,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-        viewModel.state.observe(viewLifecycleOwner, Observer { it?.let {
-            handleState(it)
-        } })
-        viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
-            showError(it)
-        })
-        viewModel.navigateToNextScreen.observe(viewLifecycleOwner, Observer {
-            findNavController().navigate(R.id.action_registration_to_changePartner)
-        })
+        initObservers()
     }
 
     private fun initViews() = with(binding) {
@@ -50,7 +43,19 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         passwordField.doAfterTextChanged { viewModel.password = it?.toString() ?: "" }
         confirmPasswordField.doAfterTextChanged { viewModel.confirmPassword = it?.toString() ?: "" }
         registerButton.setOnClickListener { onRegisterButtonClicked() }
-        loginButton.setOnClickListener { findNavController().popBackStack() }
+        loginButton.setOnClickListener { viewModel.toLogin() }
+    }
+
+    private fun initObservers() = with(viewModel) {
+        state.observe(viewLifecycleOwner, Observer { it?.let {
+            handleState(it)
+        }})
+        errorMessage.observe(viewLifecycleOwner, Observer { it?.let {
+            showError(it)
+        }})
+        navigateTo.observe(viewLifecycleOwner, Observer { it?.let {
+            handleNavigation(it)
+        }})
     }
 
     private fun setGenderDropdownAdapter() = with(binding.genderField) {
@@ -63,7 +68,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         )
     }
 
-    private fun handleState(state: RegistrationScreenState) {
+    private fun handleState(state: RegistrationViewModel.RegistrationScreenState) {
         processProgressIndicating(state.isProgressIndicated)
         processUsernameError(state.isUsernameError)
         processUsernameHighlighting(state.isUsernameHighlighted)
@@ -74,6 +79,12 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         processRegisterButton(state.isRegisterButtonEnabled)
     }
 
+    private fun handleNavigation(navigate: RegistrationViewModel.RegistrationNavigation) {
+        when(navigate) {
+            TO_LOGIN -> findNavController().popBackStack()
+            TO_TAGS -> findNavController().navigate(R.id.action_registration_to_changePartner)
+        }
+    }
     private fun processUsernameError(mode: Boolean) {
         binding.usernameLayout.error = if (mode)
             getString(R.string.existing_username_error)
@@ -128,11 +139,11 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
     private fun processProgressIndicating(mode: Boolean) = with(binding) {
         if (mode) {
-            layout.disableElements()
+            registrationLayout.disableElements()
             registerButton.invisible()
             registrationProgressBar.show()
         } else {
-            layout.enableElements()
+            registrationLayout.enableElements()
             registerButton.show()
             registrationProgressBar.hide()
         }
@@ -153,12 +164,11 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             NETWORK_UNAVAILABLE -> showSnackBar(R.string.no_network_error)
             SERVER_ERROR -> showSnackBar(R.string.server_error)
             UNEXPECTED_ERROR -> showSnackBar(R.string.unexpected_error)
-            SERVER_UNAVAILABLE -> showSnackBar(R.string.server_unavailable)
+            SERVER_UNAVAILABLE -> showSnackBar(R.string.server_unavailable_error)
             else -> return
         }
     }
 
-    private fun showSnackBar(resId: Int) {
+    private fun showSnackBar(resId: Int) =
         Snackbar.make(binding.root, resId, Snackbar.LENGTH_SHORT).show()
-    }
 }
