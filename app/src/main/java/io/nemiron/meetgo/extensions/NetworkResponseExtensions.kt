@@ -10,10 +10,13 @@ enum class ServerError(val code: Int?) {
     FIELD_OVERFLOW(103),
     WRONG_VALUE(104),
     WRONG_SYMBOLS(105),
-    LOGIN_FAILED(106);
+    LOGIN_FAILED(106),
+    NO_SUCH_FIELD(201),
+    UNKNOWN_ERROR(-1);
 
     companion object {
-        fun getServerError(code: Int?): ServerError = values().first { it.code == code }
+        fun getServerError(code: Int?) =
+            values().firstOrNull { it.code == code} ?: UNKNOWN_ERROR
     }
 }
 

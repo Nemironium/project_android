@@ -2,9 +2,10 @@ package io.nemiron.meetgo.usecase
 
 import io.nemiron.meetgo.data.managers.AuthorizationManager
 
-class CheckFirstLaunchUseCaseImpl(
+class ShowOnBoardingUseCaseImpl(
     private val authManager: AuthorizationManager
-) : CheckFirstLaunchUseCase {
-    override fun invoke(): Boolean =
-        authManager.isFirstTimeLaunch
+) : ShowOnBoardingUseCase {
+    override fun invoke() {
+        authManager.isFirstTimeLaunch = false
+    }
 }

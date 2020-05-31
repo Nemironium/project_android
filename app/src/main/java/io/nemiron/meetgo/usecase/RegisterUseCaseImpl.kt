@@ -12,16 +12,17 @@ import io.nemiron.meetgo.data.repositories.AuthorizationRepository
 import io.nemiron.meetgo.extensions.ServerError
 import io.nemiron.meetgo.extensions.handleServerError
 
-class RegisterUserUseCaseImpl(
+class RegisterUseCaseImpl(
     private val repository: AuthorizationRepository
-) : RegisterUserUseCase {
+) : RegisterUseCase {
 
     override suspend fun invoke(
-        registrationInfo: RegistrationInfo
+        info: RegistrationInfo
     ): RegistrationAnswer {
 
+        /*TODO(сделать RegistrationAnswer immutable объектом) */
         val registrationAnswer = RegistrationAnswer()
-        when(val registration = repository.registerUser(registrationInfo)) {
+        when(val registration = repository.registerUser(info)) {
             is NetworkResponse.Success -> {
                 registrationAnswer.isSuccessful = true
             }

@@ -1,10 +1,10 @@
 package io.nemiron.meetgo.usecase
 
-import io.nemiron.meetgo.data.repositories.AuthorizationRepository
+import io.nemiron.meetgo.data.managers.AuthorizationManager
 
 class CheckAuthUseCaseImpl(
-    private val authorizationRepository: AuthorizationRepository
+    private val authManager: AuthorizationManager
 ) : CheckAuthUseCase {
     override fun invoke(): Boolean =
-        authorizationRepository.isUserLogged
+        authManager.isUserLogged
 }

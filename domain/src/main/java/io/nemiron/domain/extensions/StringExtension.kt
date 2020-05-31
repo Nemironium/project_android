@@ -1,4 +1,4 @@
-package io.nemiron.domain.entities.extensions
+package io.nemiron.domain.extensions
 
 fun String.isValidEmail(): Boolean {
     val expression = """^[\w.+-]+@[\w.+-]+\.[a-zA-Z]{2,8}$""".toRegex()

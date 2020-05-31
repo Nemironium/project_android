@@ -10,6 +10,9 @@ enum class CommonError {
     SERVER_ERROR,
     UNEXPECTED_ERROR;
 
+    /*
+    * TODO(domain-слой не должен ничего знать о HTTP-исключениях)
+    * */
     companion object {
         fun getConnectionError(exception: IOException): CommonError = when(exception) {
             is SocketTimeoutException -> SERVER_UNAVAILABLE
@@ -17,4 +20,3 @@ enum class CommonError {
         }
     }
 }
-
