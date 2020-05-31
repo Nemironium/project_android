@@ -1,10 +1,14 @@
 package io.nemiron.meetgo.usecase
 
+/*TODO (эта зависимость не должна быть здесь)*/
 import com.haroldadmin.cnradapter.NetworkResponse
+
 import io.nemiron.domain.entities.CommonError
 import io.nemiron.domain.entities.RegistrationAnswer
 import io.nemiron.domain.entities.RegistrationInfo
 import io.nemiron.meetgo.data.repositories.AuthorizationRepository
+
+/*TODO (этих 2 зависимостей не должно быть в этом слое)*/
 import io.nemiron.meetgo.extensions.ServerError
 import io.nemiron.meetgo.extensions.handleServerError
 
