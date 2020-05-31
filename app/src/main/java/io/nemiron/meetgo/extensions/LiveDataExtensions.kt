@@ -50,3 +50,5 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
         private const val TAG = "SingleLiveEvent"
     }
 }
+
+fun <T : Any?> SingleLiveEvent<T>.default(initialValue: T) = apply { setValue(initialValue) }
