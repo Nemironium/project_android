@@ -10,13 +10,13 @@ class AuthorizationInterceptor(private val authorizationManager: AuthorizationMa
     override fun intercept(chain: Interceptor.Chain): Response = chain.run {
         val request = request()
             .newBuilder()
-            .header("sessionId", authorizationManager.sessionId.orEmpty())
-            .header("userId", authorizationManager.userId.orEmpty())
-            .header("appVersion", BuildConfig.VERSION_NAME)
+            .header("Session_id", authorizationManager.sessionId.orEmpty())
+            .header("User_id", authorizationManager.userId.orEmpty())
+            .header("App_version", BuildConfig.VERSION_NAME)
             .build()
         val response = proceed(request)
         Timber.d("headers in response: ${response.headers}")
-        response.header("userId")?.let {
+        response.headers["Session_id"]?.let {
             authorizationManager.sessionId = it
         }
         return response

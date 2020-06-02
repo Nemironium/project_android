@@ -43,7 +43,7 @@ class AuthorizationManagerImpl(context: Context) : AuthorizationManager {
 
     override val isUserLogged: Boolean
         get() {
-            Timber.d("userId: $userId sessionId: $sessionId")
+            Timber.d("isUserLogged userId: $userId sessionId: $sessionId")
             return !userId.isNullOrBlank() && !sessionId.isNullOrBlank()
         }
 
