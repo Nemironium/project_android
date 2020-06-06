@@ -39,7 +39,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun initObservers() = with(viewModel) {
-        state.observe(viewLifecycleOwner, Observer { it?.let {
+        state.observe(viewLifecycleOwner, Observer {
+            Timber.d("state.observe: $it")
+            it?.let {
             handleState(it)
         }})
         errorMessage.observe(viewLifecycleOwner, Observer { it?.let{
@@ -112,7 +114,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun processPasswordError(mode: Boolean) {
-        binding.usernameLayout.error = if (mode)
+        binding.passwordLayout.error = if (mode)
             getString(R.string.wrong_password_error)
         else
             null

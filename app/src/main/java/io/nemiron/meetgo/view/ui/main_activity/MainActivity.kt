@@ -44,21 +44,18 @@ class MainActivity : AppCompatActivity(),
         return currentNavController?.value?.navigateUp() ?: false
     }
 
-    override fun setLoginNavigation() {
-        hideNavigationHost()
-        setupLoginNavigation()
-    }
-
-    override fun setApplicationNavigation() {
-        hideNavigationHost()
-        setupBottomNavigationBar()
-    }
-
-    private fun setNavigation() =
+    private fun setNavigation() {
         if (!checkAuthUseCase())
             setupLoginNavigation()
         else
             setupBottomNavigationBar()
+    }
+
+    override fun setApplicationNavigation() {
+        hideNavigationHost()
+        setNavigation()
+    }
+
 
     private fun setupBottomNavigationBar() {
         showToolBar()
@@ -90,6 +87,7 @@ class MainActivity : AppCompatActivity(),
                 R.navigation.login,
                 binding.navHostContainer.id
             )
+        /*TODO(надо полностью делать это кодом, а не через XML)*/
         currentNavController =  MutableLiveData(navHostFragment.navController)
     }
 

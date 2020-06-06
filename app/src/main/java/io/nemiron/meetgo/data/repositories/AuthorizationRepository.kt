@@ -10,14 +10,7 @@ import io.nemiron.meetgo.data.responses.ErrorResponse
 class AuthorizationRepository(
     private val authorizationClient: AuthorizationClient,
     private val authorizationManager: AuthorizationManager
-)  {
-
-    val isFirstTimeLaunch: Boolean
-        get() = authorizationManager.isFirstTimeLaunch
-
-    val isUserLogged: Boolean
-        get() = authorizationManager.isUserLogged
-
+) {
     suspend fun registerUser(registrationInfo: RegistrationInfo): NetworkResponse<Unit, ErrorResponse> {
         val result = authorizationClient.registerUser(registrationInfo)
         saveCredentials(registrationInfo.username)
