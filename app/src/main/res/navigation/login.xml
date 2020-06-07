@@ -53,6 +53,6 @@
 
     <fragment
         android:id="@+id/changePartnerScreen"
-        android:name="io.nemiron.meetgo.view.ui.change_partner.ChangePartnerFragment"
-        tools:layout="@layout/fragment_change_partner" />
+        android:name="io.nemiron.meetgo.view.ui.tags.TagsFragment"
+        tools:layout="@layout/fragment_tags" />
 </navigation>

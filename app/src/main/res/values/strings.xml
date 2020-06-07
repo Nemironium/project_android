@@ -50,6 +50,9 @@
     <string name="server_error">Unexpected server error :(. Please inform developer</string>
     <string name="server_unavailable_error">Server unavailable. Please inform developer</string>
 
+    <!--Tags screen-->
+    <string name="select_tags">Select tags</string>
+    <string name="tags_description">Расскажи нам немного о себе. Выбери категории, которые тебе нравятся больше всего. Чем тщательнее выберешь, тем круче задания получишь!</string>
 
 
     <string-array name="gender_array">

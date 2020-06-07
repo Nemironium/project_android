@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/changePartnerScreen"
-        android:name="io.nemiron.meetgo.view.ui.change_partner.ChangePartnerFragment"
+        android:name="io.nemiron.meetgo.view.ui.tags.TagsFragment"
         android:label="@string/change_partner"
-        tools:layout="@layout/fragment_change_partner" />
+        tools:layout="@layout/fragment_tags" />
 </navigation>

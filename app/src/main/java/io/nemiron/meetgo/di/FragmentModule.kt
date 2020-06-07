@@ -1,7 +1,6 @@
 package io.nemiron.meetgo.di
 
 import androidx.navigation.fragment.NavHostFragment
-import io.nemiron.meetgo.view.ui.change_partner.ChangePartnerFragment
 import io.nemiron.meetgo.view.ui.forgot_password.ForgotPasswordFragment
 import io.nemiron.meetgo.view.ui.home.HomeFragment
 import io.nemiron.meetgo.view.ui.login.LoginFragment
@@ -10,6 +9,7 @@ import io.nemiron.meetgo.view.ui.on_boarding.OnBoardingFragment
 import io.nemiron.meetgo.view.ui.profile.ProfileFragment
 import io.nemiron.meetgo.view.ui.profile.settings.SettingsFragment
 import io.nemiron.meetgo.view.ui.registration.RegistrationFragment
+import io.nemiron.meetgo.view.ui.tags.TagsFragment
 import org.koin.androidx.fragment.dsl.fragment
 import org.koin.dsl.module
 
@@ -20,7 +20,7 @@ val fragmentModule = module {
     fragment { OnBoardingFragment(get()) }
     fragment { RegistrationFragment() }
     fragment { ForgotPasswordFragment() }
-    fragment { ChangePartnerFragment() }
+    fragment { TagsFragment() }
     fragment { HomeFragment() }
     fragment { NotificationsFragment() }
     fragment { ProfileFragment() }
