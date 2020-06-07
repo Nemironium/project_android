@@ -11,7 +11,7 @@ import io.nemiron.meetgo.extensions.handleServerError
 class LoginUseCase(
     private val repository: AuthorizationRepository
 )  {
-
+    /*TODO(эта обработка ошибок должна происходить в репозитории!!!)*/
     suspend operator fun invoke(info: LoginInfo): LoginAnswer {
         /*TODO("сделать LoginAnswer immutable объектом")*/
         val loginAnswer = LoginAnswer()
@@ -29,7 +29,7 @@ class LoginUseCase(
                 ServerError.USER_NOT_FOUND -> loginAnswer.isUsernameCorrect = false
                 ServerError.LOGIN_FAILED -> loginAnswer.isPasswordCorrect = false
                 /*TODO(вот тут нужно подумать: нужно ли сохранять текстовое
-                   сообщение с сервера об ошибке и показывать пользвоателю)*/
+                   сообщение с сервера об ошибке и показывать пользователю)*/
                 else -> loginAnswer.error = CommonError.SERVER_ERROR
             }
         }

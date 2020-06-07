@@ -8,7 +8,8 @@ enum class CommonError {
     NETWORK_UNAVAILABLE,
     SERVER_UNAVAILABLE,
     SERVER_ERROR,
-    UNEXPECTED_ERROR;
+    UNEXPECTED_ERROR,
+    UNAUTHORIZED;
 
     /*
     * TODO(domain-слой не должен ничего знать о HTTP-исключениях)

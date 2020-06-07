@@ -8,6 +8,7 @@ import io.nemiron.meetgo.data.managers.AuthorizationManager
 import io.nemiron.meetgo.data.managers.AuthorizationManagerImpl
 import io.nemiron.meetgo.data.network.AuthorizationInterceptor
 import io.nemiron.meetgo.data.network.services.AuthorizationService
+import io.nemiron.meetgo.data.network.services.TagsService
 import io.nemiron.meetgo.data.network.services.UserService
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
@@ -53,6 +54,8 @@ val networkModule = module {
     }
 
     single { get<Retrofit>().create(AuthorizationService::class.java) }
+
+    single { get<Retrofit>().create(TagsService::class.java) }
 
     single { get<Retrofit>().create(UserService::class.java) }
 
