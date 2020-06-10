@@ -4,6 +4,8 @@ import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import io.nemiron.meetgo.data.apiclients.AuthorizationClient
 import io.nemiron.meetgo.data.apiclients.AuthorizationClientImpl
+import io.nemiron.meetgo.data.apiclients.TagsClient
+import io.nemiron.meetgo.data.apiclients.TagsClientImpl
 import io.nemiron.meetgo.data.managers.AuthorizationManager
 import io.nemiron.meetgo.data.managers.AuthorizationManagerImpl
 import io.nemiron.meetgo.data.network.AuthorizationInterceptor
@@ -60,4 +62,6 @@ val networkModule = module {
     single { get<Retrofit>().create(UserService::class.java) }
 
     single { AuthorizationClientImpl(get()) as AuthorizationClient }
+
+    single { TagsClientImpl(tagsService=get()) as TagsClient }
 }

@@ -29,6 +29,9 @@ class TagsViewModel(private val interactor: TagsInteractor) : ViewModel() {
     val navigateTo: LiveData<Unit>
         get() = _navigateTo
 
+    fun toHome() {
+        _navigateTo.call()
+    }
 
     interface OnTagSelectedListener {
 

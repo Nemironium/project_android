@@ -10,4 +10,5 @@ val useCaseModule = module {
     single { LoginUseCase(repository = get()) }
     single { ValidateRegistrationDataUseCase() }
     single { RegisterUseCase(repository = get()) }
+    single { TagsInteractor(repository = get()) }
 }
