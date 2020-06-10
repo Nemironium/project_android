@@ -21,7 +21,7 @@ import retrofit2.Retrofit
 import timber.log.Timber
 
 
-private const val BASE_URL = "http://31.134.153.174/"
+private const val BASE_URL = "https://meet-go.me/"
 private val contentType = "application/json".toMediaType()
 
 @UnstableDefault
